@@ -13,25 +13,25 @@ class TestDrummer(unittest.TestCase):
 
         self.assertEqual(d.channel, 9)
         self.assertEqual(d.counter, 0)
-        self.assertEqual(d.score.timeSignature.ratioString, '4/4')
         self.assertEqual(d.beats, 4)
         self.assertEqual(d.divisions, 4)
         self.assertEqual(d.volume, 100)
         self.assertEqual(d.bpm, 120)
         self.assertEqual(d.bars, 4)
 
+        d.set_bpm(99)
+        self.assertEqual(d.bpm, 99)
+
+        self.assertEqual(d.score.timeSignature.ratioString, '4/4')
         d.set_ts('5/8')
         self.assertEqual(d.score.timeSignature.ratioString, '5/8')
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 8)
-
         d = Drummer(signature='5/4')
         self.assertEqual(d.score.timeSignature.ratioString, '5/4')
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 4)
 
-        d.set_bpm(99)
-        self.assertEqual(d.bpm, 99)
         # d.score.show('text')
 
     # def test_pattern(self):
