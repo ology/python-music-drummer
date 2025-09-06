@@ -8,12 +8,10 @@ class Drummer:
         self.file = file
         self.bpm = bpm
         self.volume = volume
-        self.signature = signature
-        self.beats = int(signature.split('/')[0])
-        self.divisions = int(signature.split('/')[1])
         self.bars = bars
         self.counter = 0
         self.channel = 9
+        self.signature = signature
         self._init_score()
 
     def _init_score(self):
