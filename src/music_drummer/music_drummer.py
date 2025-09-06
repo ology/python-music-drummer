@@ -1,4 +1,4 @@
-from music21 import stream, note, tempo, meter, duration
+from music21 import stream, note, tempo, meter, duration, instrument
 
 class Drummer:
     STRAIGHT = 50
@@ -53,3 +53,10 @@ class Drummer:
         if accent is None:
             accent = self.accent
         self.note(pitch, dur, volume - accent)
+
+    def count_in(self, bars=1):
+        self.score.append(instrument.Woodblock())
+        for _ in range(bars):
+            self.accent_note('C5')
+            for i in range(self.beats - 1):
+                self.note('C4')
