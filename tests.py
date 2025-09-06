@@ -16,9 +16,9 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.beats, 4)
         self.assertEqual(d.divisions, 4)
         self.assertEqual(d.volume, 100)
-        self.assertEqual(d.bpm, 120)
         self.assertEqual(d.bars, 4)
 
+        self.assertEqual(d.bpm, 120)
         d.set_bpm(99)
         self.assertEqual(d.bpm, 99)
 
