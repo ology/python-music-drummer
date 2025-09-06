@@ -32,6 +32,7 @@ class TestDrummer(unittest.TestCase):
 
         d.set_bpm(99)
         self.assertEqual(d.bpm, 99)
+        # d.score.show('text')
 
     # def test_pattern(self):
     #     d = Drummer()

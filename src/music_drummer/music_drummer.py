@@ -27,7 +27,6 @@ class Drummer:
         self.score.timeSignature = ts
         self.beats = self.score.timeSignature.numerator
         self.divisions = self.score.timeSignature.denominator
-        # self.score.append(ts)
 
     def set_bpm(self, bpm: int):
         self.bpm = bpm
