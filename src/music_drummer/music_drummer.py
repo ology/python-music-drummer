@@ -4,7 +4,7 @@ from music21 import duration as m21duration
 class Drummer:
     STRAIGHT = 50
 
-    def __init__(self, file='MIDI-Drummer.mid', bpm=120, volume=100, signature='4/4', bars=4):
+    def __init__(self, file='Drummer.mid', bpm=120, volume=100, signature='4/4', bars=4):
         self.file = file
         self.bpm = bpm
         self.volume = volume
