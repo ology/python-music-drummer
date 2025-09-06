@@ -1,5 +1,4 @@
-from music21 import stream, note, tempo, meter, midi, instrument
-from music21 import duration as m21duration
+from music21 import stream, note, tempo, meter, duration
 
 class Drummer:
     STRAIGHT = 50
@@ -29,3 +28,13 @@ class Drummer:
     def set_bpm(self, bpm: int):
         self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
+
+    def note(self, pitch, dur=1.0, volume=None):
+        if volume is None:
+            volume = self.volume
+        n = note.Note(pitch)
+        n.volume.velocity = volume
+        n.duration = duration.Duration(dur)
+        self.score.append(n)
+        self.counter += dur
+        return n
