@@ -57,6 +57,6 @@ class Drummer:
     def count_in(self, bars=1):
         self.score.append(instrument.Woodblock())
         for _ in range(bars):
-            self.accent_note('C5')
+            self.accent_note(75)
             for i in range(self.beats - 1):
-                self.note('C4')
+                self.note(75)

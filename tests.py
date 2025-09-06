@@ -32,7 +32,9 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 4)
 
-        # d.score.show('text')
+        d.count_in(1)
+   
+        d.score.show('midi')
 
     # def test_pattern(self):
     #     d = Drummer()
