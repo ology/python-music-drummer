@@ -34,7 +34,10 @@ class TestDrummer(unittest.TestCase):
 
         d.count_in(1)
         self.assertEqual(len(d.score.getElementsByClass('Note')), d.beats)
-   
+
+        d = Drummer()
+        d.pattern(patterns=['1000000010010000', '0000100000001000', '1010101010101010'])
+
         d.score.show('text')
 
     # def test_pattern(self):

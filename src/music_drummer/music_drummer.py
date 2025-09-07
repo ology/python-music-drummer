@@ -32,6 +32,12 @@ class Drummer:
         self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
+    def rest(self, dur=1.0):
+        n = note.Rest()
+        n.duration = duration.Duration(dur)
+        self.score.append(n)
+        self.counter += dur
+
     def note(self, num, dur=1.0, volume=None):
         if volume is None:
             volume = self.volume
@@ -40,7 +46,6 @@ class Drummer:
         n.duration = duration.Duration(dur)
         self.score.append(n)
         self.counter += dur
-        return n
     
     def accent_note(self, num, dur=1.0, volume=None, accent=None):
         if volume is None:
@@ -61,3 +66,15 @@ class Drummer:
             self.accent_note(75)
             for i in range(self.beats - 1):
                 self.note(75)
+
+    def pattern(self, patch=38, patterns=None, duration=1/16, vary=None):
+        if not patterns:
+            return
+        if vary is None:
+            vary = {
+                '0': lambda self, **args: self.rest(dur=duration),
+                '1': lambda self, **args: self.note(patch, dur=duration),
+            }
+        for pattern_str in patterns:
+            for bit in pattern_str:
+                vary[bit](self, patch=patch, dur=duration)
