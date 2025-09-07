@@ -31,29 +31,29 @@ class Drummer:
         self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
-    def note(self, pitch, dur=1.0, volume=None):
+    def note(self, num, dur=1.0, volume=None):
         if volume is None:
             volume = self.volume
-        n = note.Note(pitch)
+        n = note.Note(num)
         n.volume.velocity = volume
         n.duration = duration.Duration(dur)
         self.score.append(n)
         self.counter += dur
         return n
     
-    def accent_note(self, pitch, dur=1.0, volume=None, accent=None):
+    def accent_note(self, num, dur=1.0, volume=None, accent=None):
         if volume is None:
             volume = self.volume
         if accent is None:
             accent = self.accent
-        self.note(pitch, dur, volume + accent)
+        self.note(num, dur, volume + accent)
     
-    def duck_note(self, pitch, dur=1.0, volume=None, accent=None):
+    def duck_note(self, num, dur=1.0, volume=None, accent=None):
         if volume is None:
             volume = self.volume
         if accent is None:
             accent = self.accent
-        self.note(pitch, dur, volume - accent)
+        self.note(num, dur, volume - accent)
 
     def count_in(self, bars=1):
         for _ in range(bars):
