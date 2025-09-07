@@ -5,13 +5,13 @@ class Drummer:
 
     def __init__(self, file='Drummer.mid', bpm=120, volume=100, accent=20, signature='4/4', bars=4):
         self.file = file
-        self.bpm = bpm
         self.volume = volume
         self.bars = bars
         self.counter = 0
         self.channel = 9
         self.accent = accent
         self.signature = signature
+        self.bpm = bpm
         self._init_score()
 
     def _init_score(self):
@@ -19,6 +19,7 @@ class Drummer:
         # self.part = stream.Part()
         # self.score.append(self.part)
         self.set_ts(self.signature)
+        self.set_bpm(self.bpm)
         self.score.append(instrument.Woodblock())
 
     def set_ts(self, ts):
@@ -27,7 +28,7 @@ class Drummer:
         self.beats = self.score.timeSignature.numerator
         self.divisions = self.score.timeSignature.denominator
 
-    def set_bpm(self, bpm: int):
+    def set_bpm(self, bpm):
         self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
