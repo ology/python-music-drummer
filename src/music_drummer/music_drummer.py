@@ -67,7 +67,7 @@ class Drummer:
             for i in range(self.beats - 1):
                 self.note(75)
 
-    def pattern(self, patch=38, patterns=None, duration=1/16, vary=None):
+    def pattern(self, patch=38, patterns=None, duration=1/4, vary=None):
         if not patterns:
             return
         if vary is None:
