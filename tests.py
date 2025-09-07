@@ -33,7 +33,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.divisions, 4)
 
         d.count_in(1)
-        self.assertEqual(len(d.score.getElementsByClass('Note')), 5)
+        self.assertEqual(len(d.score.getElementsByClass('Note')), d.beats)
    
         d.score.show('text')
 
