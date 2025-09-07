@@ -19,6 +19,7 @@ class Drummer:
         # self.part = stream.Part()
         # self.score.append(self.part)
         self.set_ts(self.signature)
+        self.score.append(instrument.Woodblock())
 
     def set_ts(self, ts):
         ts = meter.TimeSignature(ts)
@@ -55,7 +56,6 @@ class Drummer:
         self.note(pitch, dur, volume - accent)
 
     def count_in(self, bars=1):
-        self.score.append(instrument.Woodblock())
         for _ in range(bars):
             self.accent_note(75)
             for i in range(self.beats - 1):
