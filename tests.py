@@ -85,8 +85,8 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.snare.getElementsByClass('Note')), 4)
         self.assertEqual(d.snare.getElementsByClass('Note')[1].duration.quarterLength, 1/16)
         self.assertEqual(d.snare.getElementsByClass('Note')[2].duration.quarterLength, 1/2 - 1/16)
-        d.sync_parts()
-        d.snare.show('midi')
+        # d.sync_parts()
+        # d.snare.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
