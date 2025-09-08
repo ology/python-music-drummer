@@ -50,10 +50,14 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), 4 + 8)
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
-        # d = Drummer(signature='5/4')
-        # d.pattern(patterns={'kick': '1000000010', 'snare': '0000100000', 'hihat': '1010101010'})
-        # d.sync_parts()
-        # d.score.show('midi')
+
+    # def test_5_8_signature(self):
+    #     d = Drummer(signature='5/8')
+    #     d.count_in()
+    #     for _ in range(4):
+    #         d.pattern(patterns={'kick': '1000000010', 'snare': '0000001000', 'hihat': '1111111111'}, duration=1/2)
+    #     d.sync_parts()
+    #     d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
