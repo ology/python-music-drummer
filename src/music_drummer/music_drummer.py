@@ -104,6 +104,7 @@ class Drummer:
     def pattern(self, patterns=None, duration=1/4, vary=None):
         if not patterns:
             return
+
         if vary is None:
             vary = {
                 '0': lambda self, **args: self.rest(dur=args['dur'], part=args['part']),
