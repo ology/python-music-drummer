@@ -21,8 +21,6 @@ class Drummer:
 
     def _init_score(self):
         self.score = stream.Score()
-        # self.part = stream.Part()
-        # self.score.append(self.part)
         self.set_ts(self.signature)
         self.set_bpm(self.bpm)
         # self.score.append(instrument.Percussion()) # XXX broken?
