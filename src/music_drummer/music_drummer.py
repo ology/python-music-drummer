@@ -89,8 +89,12 @@ class Drummer:
             part = self.hihat
         for _ in range(bars):
             self.accent_note(75, part=part)
+            self.rest(part=self.kick)
+            self.rest(part=self.snare)
             for i in range(self.beats - 1):
                 self.note(75, part=self.hihat)
+                self.rest(part=self.kick)
+                self.rest(part=self.snare)
 
     def pattern(self, patch=38, patterns=None, duration=1/4, vary=None):
         if not patterns:
