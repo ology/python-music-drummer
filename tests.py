@@ -53,7 +53,7 @@ class TestDrummer(unittest.TestCase):
         d = Drummer(signature='5/4')
         d.pattern(patterns={'kick': '1000000010', 'snare': '0000100000', 'hihat': '1010101010'})
         d.sync_parts()
-        d.score.show()
+        d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
