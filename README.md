@@ -7,8 +7,8 @@ from music_drummer import Drummer
 
 d = Drummer()
 
-d.instruments['kick']['num'] = 36 # change the kick patch
-d.instruments['snare']['num'] = 40 # change the snare patch
+d.set_instrument('kick', 36) # change the kick patch from 35
+d.set_instrument('snare', 40) # change the snare patch from 38
 
 d.set_bpm(99) # change the beats per minute from 120
 d.set_ts('5/8') # change the time signature from 4/4

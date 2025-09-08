@@ -51,6 +51,10 @@ class Drummer:
         self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
+    def set_instrument(self, name, num):
+        if name in self.instruments:
+            self.instruments[name]['num'] = num
+
     def rest(self, dur=1.0, part=None):
         n = note.Rest()
         n.duration = duration.Duration(dur)
