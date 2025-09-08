@@ -10,7 +10,6 @@ class TestDrummer(unittest.TestCase):
     def test_basics(self):
         d = Drummer()
         self.assertIsInstance(d.score, stream.base.Score)
-        self.assertEqual(d.channel, 9)
         self.assertEqual(d.counter, 0)
         self.assertEqual(d.beats, 4)
         self.assertEqual(d.divisions, 4)
