@@ -42,9 +42,10 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), 4 + 8)
 
         d.sync_parts()
-
-        print(d.counter)
-        d.score.show('midi')
+        self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
+        
+        # print(d.counter)
+        d.score.show('text')
 
     # def test_pattern(self):
     #     d = Drummer()
