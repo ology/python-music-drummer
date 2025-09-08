@@ -140,5 +140,5 @@ class Drummer:
             factor = round((crescendo[1] - crescendo[0]) / (subdivisions - 1))
             volume = crescendo[0]
         for _ in range(subdivisions):
-            self.note('snare', dur=duration/subdivisions, volume=int(volume), part=self.snare)
+            self.note('snare', duration=duration/subdivisions, volume=int(volume), part=self.snare)
             volume += factor

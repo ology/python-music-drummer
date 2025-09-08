@@ -86,9 +86,9 @@ class TestDrummer(unittest.TestCase):
 
     def test_flam(self):
         d = Drummer()
-        d.note('snare', dur=1/2, flam=0, part=d.snare)
-        d.note('snare', dur=1/2, flam=1/16, part=d.snare)
-        d.note('snare', dur=1/2, flam=0, part=d.snare)
+        d.note('snare', duration=1/2, flam=0, part=d.snare)
+        d.note('snare', duration=1/2, flam=1/16, part=d.snare)
+        d.note('snare', duration=1/2, flam=0, part=d.snare)
         self.assertEqual(len(d.snare.getElementsByClass('Note')), 4)
         self.assertEqual(d.snare.getElementsByClass('Note')[1].duration.quarterLength, 1/16)
         self.assertEqual(d.snare.getElementsByClass('Note')[2].duration.quarterLength, 1/2 - 1/16)
