@@ -56,17 +56,17 @@ class Drummer:
         if name in self.instruments:
             self.instruments[name]['num'] = num
 
-    def rest(self, dur=1.0, part=None):
+    def rest(self, duration=1.0, part=None):
         n = note.Rest()
-        n.duration = m21duration.Duration(dur)
+        n.duration = m21duration.Duration(duration)
         if part:
             part.append(n)
         else:
             self.score.append(n)
-        if dur:
-            self.counter += dur
+        if duration:
+            self.counter += duration
 
-    def note(self, name, dur=1.0, volume=None, flam=0, part=None):
+    def note(self, name, duration=1.0, volume=None, flam=0, part=None):
         if volume is None:
             volume = self.volume
         if flam > 0:
@@ -75,27 +75,27 @@ class Drummer:
             part.append(grace)
         n = note.Note(self.instruments[name]['num'])
         n.volume.velocity = volume
-        n.duration = m21duration.Duration(dur - flam)
+        n.duration = m21duration.Duration(duration - flam)
         if part:
             part.append(n)
         else:
             self.score.append(n)
-        if dur:
-            self.counter += dur
-    
-    def accent_note(self, num, dur=1.0, volume=None, accent=None, part=None):
-        if volume is None:
-            volume = self.volume
-        if accent is None:
-            accent = self.accent
-        self.note(num, dur=dur, volume=volume + accent, part=part)
+        if duration:
+            self.counter += duration
 
-    def duck_note(self, num, dur=1.0, volume=None, accent=None, part=None):
+    def accent_note(self, num, duration=1.0, volume=None, accent=None, part=None):
         if volume is None:
             volume = self.volume
         if accent is None:
             accent = self.accent
-        self.note(num, dur=dur, volume=volume - accent, part=part)
+        self.note(num, duration=duration, volume=volume + accent, part=part)
+
+    def duck_note(self, num, duration=1.0, volume=None, accent=None, part=None):
+        if volume is None:
+            volume = self.volume
+        if accent is None:
+            accent = self.accent
+        self.note(num, duration=duration, volume=volume - accent, part=part)
 
     def count_in(self, bars=1, part=None):
         if part is None:
@@ -115,22 +115,22 @@ class Drummer:
 
         if vary is None:
             vary = {
-                '0': lambda self, **args: self.rest(dur=args['dur'], part=args['part']),
-                '1': lambda self, **args: self.note(args['patch'], dur=args['dur'], part=args['part']),
+                '0': lambda self, **args: self.rest(duration=args['duration'], part=args['part']),
+                '1': lambda self, **args: self.note(args['patch'], duration=args['duration'], part=args['part']),
             }
 
         if 'kick' in patterns:
             for pattern_str in patterns['kick']:
                 for bit in pattern_str:
-                    vary[bit](self, patch='kick', dur=duration, part=self.kick)
+                    vary[bit](self, patch='kick', duration=duration, part=self.kick)
         if 'snare' in patterns:
             for pattern_str in patterns['snare']:
                 for bit in pattern_str:
-                    vary[bit](self, patch='snare', dur=duration, part=self.snare)
+                    vary[bit](self, patch='snare', duration=duration, part=self.snare)
         if 'hihat' in patterns:
             for pattern_str in patterns['hihat']:
                 for bit in pattern_str:
-                    vary[bit](self, patch='hihat', dur=duration, part=self.hihat)
+                    vary[bit](self, patch='hihat', duration=duration, part=self.hihat)
 
     def roll(self, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
