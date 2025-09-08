@@ -74,7 +74,7 @@ class Drummer:
         if flam:
             n2 = note.Note(num, type='eighth')
             grace = n2.getGrace()
-            part.insert(n.beat, grace)
+            part.insert(n.beat - 1, grace)
         if dur:
             self.counter += dur
     

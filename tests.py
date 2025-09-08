@@ -82,10 +82,7 @@ class TestDrummer(unittest.TestCase):
         d.note(d.instruments['snare']['num'], dur=1/2, flam=False, part=d.snare)
         d.note(d.instruments['snare']['num'], dur=1/2, flam=True, part=d.snare)
         self.assertEqual(len(d.snare.getElementsByClass('Note')), 3)
-        # self.assertTrue(d.snare.getElementsByClass('Note')[1].duration.quarterLength)
-        # self.assertFalse(d.snare.getElementsByClass('Note')[1].isGrace)
-        # self.assertTrue(d.snare.getElementsByClass('Note')[2].isGrace)
-        # self.assertFalse(d.snare.getElementsByClass('Note')[3].isGrace)
+        self.assertEqual(d.snare.getElementsByClass('Note')[1].duration.quarterLength, 0)
         d.sync_parts()
         d.snare.show('text')
 
