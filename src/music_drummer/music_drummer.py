@@ -93,11 +93,11 @@ class Drummer:
         if part is None:
             part = self.hihat
         for _ in range(bars):
-            self.accent_note(75, part=part)
+            self.accent_note(self.instruments['hihat']['num'], part=part)
             self.rest(part=self.kick)
             self.rest(part=self.snare)
             for i in range(self.beats - 1):
-                self.note(75, part=self.hihat)
+                self.note(self.instruments['hihat']['num'], part=self.hihat)
                 self.rest(part=self.kick)
                 self.rest(part=self.snare)
 
