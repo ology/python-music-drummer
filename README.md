@@ -3,7 +3,7 @@ Glorified Metronome
 
 ## SYNOPSIS
 ```python
-from music_drummer.music_drummer import Drummer
+from music_drummer import Drummer
 
 d = Drummer()
 
