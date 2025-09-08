@@ -61,20 +61,20 @@ class Drummer:
         if dur:
             self.counter += dur
 
-    def note(self, num, dur=1.0, volume=None, flam=False, part=None):
+    def note(self, num, dur=1.0, volume=None, flam=0, part=None):
         if volume is None:
             volume = self.volume
+        if flam > 0:
+            grace = note.Note(num)
+            grace.duration = duration.Duration(flam)
+            part.append(grace)
         n = note.Note(num)
         n.volume.velocity = volume
-        n.duration = duration.Duration(dur)
+        n.duration = duration.Duration(dur - flam)
         if part:
             part.append(n)
         else:
             self.score.append(n)
-        if flam:
-            n2 = note.Note(num, type='eighth')
-            grace = n2.getGrace()
-            part.insert(n.beat - 1, grace)
         if dur:
             self.counter += dur
     
