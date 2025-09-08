@@ -12,7 +12,7 @@ d.instruments['snare']['num'] = 40 # change the snare patch
 
 d.set_bpm(99) # change the beats per minute from 120
 
-d.set_ts('5/8') # change the time sigature from 4/4
+d.set_ts('5/8') # change the time signature from 4/4
 
 d.count_in(2) # count-in on the hi-hats for 2 measures
 
