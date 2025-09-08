@@ -4,7 +4,7 @@ import unittest
 import tempfile
 import os
 from music_drummer.music_drummer import Drummer
-from music21 import *
+from music21 import stream
 
 class TestDrummer(unittest.TestCase):
     def test_basics(self):
