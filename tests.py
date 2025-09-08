@@ -50,6 +50,10 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), 4 + 8)
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
+        d = Drummer(signature='5/4')
+        d.pattern(patterns={'kick': '1000000010', 'snare': '0000100000', 'hihat': '1010101010'})
+        d.sync_parts()
+        d.score.show()
 
 if __name__ == '__main__':
     unittest.main()
