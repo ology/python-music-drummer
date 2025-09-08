@@ -77,5 +77,17 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.snare.getElementsByClass('Note')[0].volume.velocity, 100)
         self.assertEqual(d.snare.getElementsByClass('Note')[-1].volume.velocity, 127)
 
+    def test_flam(self):
+        d = Drummer()
+        d.note(d.instruments['snare']['num'], dur=1/2, flam=False, part=d.snare)
+        d.note(d.instruments['snare']['num'], dur=1/2, flam=True, part=d.snare)
+        self.assertEqual(len(d.snare.getElementsByClass('Note')), 3)
+        # self.assertTrue(d.snare.getElementsByClass('Note')[1].duration.quarterLength)
+        # self.assertFalse(d.snare.getElementsByClass('Note')[1].isGrace)
+        # self.assertTrue(d.snare.getElementsByClass('Note')[2].isGrace)
+        # self.assertFalse(d.snare.getElementsByClass('Note')[3].isGrace)
+        d.sync_parts()
+        d.snare.show('text')
+
 if __name__ == '__main__':
     unittest.main()
