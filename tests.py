@@ -7,7 +7,7 @@ from music_drummer.music_drummer import Drummer
 from music21 import *
 
 class TestDrummer(unittest.TestCase):
-    def test_basic(self):
+    def test_basics(self):
         d = Drummer()
         self.assertIsInstance(d.score, stream.base.Score)
 
