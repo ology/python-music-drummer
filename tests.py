@@ -61,7 +61,6 @@ class TestDrummer(unittest.TestCase):
 
     def test_roll(self):
         d = Drummer()
-        d.count_in()
         d.roll()
         self.assertEqual(d.snare.getElementsByClass('Note')[0].duration.quarterLength, 1/4)
         self.assertEqual(len(d.snare.getElementsByClass('Note')), 4)
