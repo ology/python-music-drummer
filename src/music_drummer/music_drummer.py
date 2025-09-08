@@ -96,7 +96,7 @@ class Drummer:
                 self.rest(part=self.kick)
                 self.rest(part=self.snare)
 
-    def pattern(self, patch=38, patterns=None, duration=1/4, vary=None):
+    def pattern(self, patterns=None, duration=1/4, vary=None):
         if not patterns:
             return
         if vary is None:
