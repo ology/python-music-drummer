@@ -96,7 +96,7 @@ class Drummer:
             self.rest(part=self.kick)
             self.rest(part=self.snare)
             for i in range(self.beats - 1):
-                self.note(self.instruments['hihat']['num'], part=self.hihat)
+                self.note(self.instruments['hihat']['num'], part=part)
                 self.rest(part=self.kick)
                 self.rest(part=self.snare)
 
