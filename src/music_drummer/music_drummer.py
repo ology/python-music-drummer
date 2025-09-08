@@ -1,4 +1,5 @@
-from music21 import stream, note, tempo, meter, duration, instrument
+from music21 import stream, note, tempo, meter, instrument
+from music21 import duration as m21duration
 
 class Drummer:
     STRAIGHT = 50
@@ -57,7 +58,7 @@ class Drummer:
 
     def rest(self, dur=1.0, part=None):
         n = note.Rest()
-        n.duration = duration.Duration(dur)
+        n.duration = m21duration.Duration(dur)
         if part:
             part.append(n)
         else:
@@ -70,11 +71,11 @@ class Drummer:
             volume = self.volume
         if flam > 0:
             grace = note.Note(self.instruments[name]['num'])
-            grace.duration = duration.Duration(flam)
+            grace.duration = m21duration.Duration(flam)
             part.append(grace)
         n = note.Note(self.instruments[name]['num'])
         n.volume.velocity = volume
-        n.duration = duration.Duration(dur - flam)
+        n.duration = m21duration.Duration(dur - flam)
         if part:
             part.append(n)
         else:
