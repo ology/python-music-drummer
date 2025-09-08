@@ -113,12 +113,12 @@ class Drummer:
         if 'kick' in patterns:
             for pattern_str in patterns['kick']:
                 for bit in pattern_str:
-                    vary[bit](self, patch=35, dur=duration, part=self.kick)
+                    vary[bit](self, patch=self.instruments['kick']['num'], dur=duration, part=self.kick)
         if 'snare' in patterns:
             for pattern_str in patterns['snare']:
                 for bit in pattern_str:
-                    vary[bit](self, patch=38, dur=duration, part=self.snare)
+                    vary[bit](self, patch=self.instruments['snare']['num'], dur=duration, part=self.snare)
         if 'hihat' in patterns:
             for pattern_str in patterns['hihat']:
                 for bit in pattern_str:
-                    vary[bit](self, patch=42, dur=duration, part=self.hihat)
+                    vary[bit](self, patch=self.instruments['hihat']['num'], dur=duration, part=self.hihat)
