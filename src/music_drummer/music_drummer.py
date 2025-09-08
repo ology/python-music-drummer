@@ -13,6 +13,7 @@ class Drummer:
         self.signature = signature
         self.bpm = bpm
         self._init_score()
+        self._init_parts()
 
     def _init_score(self):
         self.score = stream.Score()
@@ -22,6 +23,19 @@ class Drummer:
         self.set_bpm(self.bpm)
         self.score.append(instrument.Woodblock())
 
+    def _init_parts(self):
+        self.kick = stream.Measure()
+        self.kick.append(instrument.BassDrum())
+        self.snare = stream.Measure()
+        self.snare.append(instrument.SnareDrum())
+        self.hihat = stream.Measure()
+        self.hihat.append(instrument.Cymbals())
+
+    def append_parts(self):
+        self.score.append(self.kick)
+        self.score.append(self.snare)
+        self.score.append(self.hihat)
+        
     def set_ts(self, ts):
         ts = meter.TimeSignature(ts)
         self.score.timeSignature = ts
@@ -32,34 +46,42 @@ class Drummer:
         self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
-    def rest(self, dur=1.0):
+    def rest(self, dur=1.0, measure=None):
         n = note.Rest()
         n.duration = duration.Duration(dur)
-        self.score.append(n)
-        self.counter += dur
+        if measure:
+            measure.append(n)
+        else:
+            self.score.append(n)
+        if dur:
+            self.counter += dur
 
-    def note(self, num, dur=1.0, volume=None):
+    def note(self, num, dur=1.0, volume=None, measure=None):
         if volume is None:
             volume = self.volume
         n = note.Note(num)
         n.volume.velocity = volume
         n.duration = duration.Duration(dur)
-        self.score.append(n)
-        self.counter += dur
+        if measure:
+            measure.append(n)
+        else:
+            self.score.append(n)
+        if dur:
+            self.counter += dur
     
-    def accent_note(self, num, dur=1.0, volume=None, accent=None):
+    def accent_note(self, num, dur=1.0, volume=None, accent=None, measure=None):
         if volume is None:
             volume = self.volume
         if accent is None:
             accent = self.accent
-        self.note(num, dur, volume + accent)
-    
-    def duck_note(self, num, dur=1.0, volume=None, accent=None):
+        self.note(num, dur=dur, volume=volume + accent, measure=measure)
+
+    def duck_note(self, num, dur=1.0, volume=None, accent=None, measure=None):
         if volume is None:
             volume = self.volume
         if accent is None:
             accent = self.accent
-        self.note(num, dur, volume - accent)
+        self.note(num, dur=dur, volume=volume - accent, measure=measure)
 
     def count_in(self, bars=1):
         for _ in range(bars):
@@ -72,9 +94,19 @@ class Drummer:
             return
         if vary is None:
             vary = {
-                '0': lambda self, **args: self.rest(dur=duration),
-                '1': lambda self, **args: self.note(patch, dur=duration),
+                '0': lambda self, **args: self.rest(dur=args['dur'], measure=args['measure']),
+                '1': lambda self, **args: self.note(args['patch'], dur=args['dur'], measure=args['measure']),
             }
-        for pattern_str in patterns:
-            for bit in pattern_str:
-                vary[bit](self, patch=patch, dur=duration)
+
+        if 'kick' in patterns:
+            for pattern_str in patterns['kick']:
+                for bit in pattern_str:
+                    vary[bit](self, patch=35, dur=duration, measure=self.kick)
+        if 'snare' in patterns:
+            for pattern_str in patterns['snare']:
+                for bit in pattern_str:
+                    vary[bit](self, patch=38, dur=duration, measure=self.snare)
+        if 'hihat' in patterns:
+            for pattern_str in patterns['hihat']:
+                for bit in pattern_str:
+                    vary[bit](self, patch=42, dur=duration, measure=self.hihat)
