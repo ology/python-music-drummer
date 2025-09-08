@@ -123,7 +123,14 @@ class Drummer:
                 for bit in pattern_str:
                     vary[bit](self, patch=self.instruments['hihat']['num'], dur=duration, part=self.hihat)
 
-    def roll(self, duration=1, subdivisions=4):
+    def roll(self, duration=1, subdivisions=4, crescendo=[]):
         patch = self.instruments['snare']['num']
+        if not crescendo:
+            factor = 0
+            volume = self.volume
+        else:
+            factor = round((crescendo[1] - crescendo[0]) / (subdivisions - 1))
+            volume = crescendo[0]
         for _ in range(subdivisions):
-            self.note(patch, dur=duration/subdivisions, part=self.snare)
+            self.note(patch, dur=duration/subdivisions, volume=int(volume), part=self.snare)
+            volume += factor

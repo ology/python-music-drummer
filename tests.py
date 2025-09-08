@@ -72,6 +72,10 @@ class TestDrummer(unittest.TestCase):
         d.roll(duration=0.5, subdivisions=7)
         self.assertEqual(float(d.snare.getElementsByClass('Note')[0].duration.quarterLength), 1/14)
         self.assertEqual(len(d.snare.getElementsByClass('Note')), 7)
+        d = Drummer()
+        d.roll(crescendo=[100, 127])
+        self.assertEqual(d.snare.getElementsByClass('Note')[0].volume.velocity, 100)
+        self.assertEqual(d.snare.getElementsByClass('Note')[-1].volume.velocity, 127)
 
 if __name__ == '__main__':
     unittest.main()
