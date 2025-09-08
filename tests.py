@@ -42,6 +42,11 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 4)
 
+    def test_instrument(self):
+        d = Drummer()
+        d.set_instrument('kick', 36)
+        self.assertEqual(d.instruments['kick']['num'], 36)
+
     def test_patterns(self):
         d = Drummer()
         d.count_in()
