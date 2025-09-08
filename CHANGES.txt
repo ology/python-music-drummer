@@ -1,5 +1,5 @@
 0.1.1 2025-01-27
-    - Flesh-out the Readme.
+    - Fix the docs.
 
 0.1.0 2025-01-27
     - Initial creation
