@@ -21,7 +21,7 @@ class Drummer:
         # self.score.append(self.part)
         self.set_ts(self.signature)
         self.set_bpm(self.bpm)
-        self.score.append(instrument.Percussion()) # XXX broken?
+        # self.score.append(instrument.Percussion()) # XXX broken?
         self.score.append(instrument.Woodblock())  # <- so this?
 
     def _init_parts(self):
