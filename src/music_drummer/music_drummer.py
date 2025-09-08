@@ -12,13 +12,13 @@ class Drummer:
         self.accent = accent
         self.signature = signature
         self.bpm = bpm
-        self._init_score()
-        self._init_parts()
         self.instruments = {
             'kick': { 'num': 35, 'obj': instrument.BassDrum() },
             'snare': { 'num': 38, 'obj': instrument.SnareDrum() },
             'hihat': { 'num': 42, 'obj': instrument.HiHatCymbal() },
         }
+        self._init_score()
+        self._init_parts()
 
     def _init_score(self):
         self.score = stream.Score()
@@ -31,11 +31,11 @@ class Drummer:
 
     def _init_parts(self):
         self.kick = stream.Part()
-        self.kick.append(instrument.BassDrum())
+        self.kick.append(self.instruments['kick']['obj'])
         self.snare = stream.Part()
-        self.snare.append(instrument.SnareDrum())
+        self.snare.append(self.instruments['snare']['obj'])
         self.hihat = stream.Part()
-        self.hihat.append(instrument.HiHatCymbal())
+        self.hihat.append(self.instruments['hihat']['obj'])
 
     def sync_parts(self):
         self.score.insert(0, self.kick)
