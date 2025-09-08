@@ -17,7 +17,7 @@ class Drummer:
         self.instruments = {
             'kick': { 'num': 35, 'obj': instrument.BassDrum() },
             'snare': { 'num': 38, 'obj': instrument.SnareDrum() },
-            'cymbals': { 'num': 42, 'obj': instrument.Cymbals() },
+            'hihat': { 'num': 42, 'obj': instrument.HiHatCymbal() },
         }
 
     def _init_score(self):
@@ -34,13 +34,13 @@ class Drummer:
         self.kick.append(instrument.BassDrum())
         self.snare = stream.Part()
         self.snare.append(instrument.SnareDrum())
-        self.cymbals = stream.Part()
-        self.cymbals.append(instrument.Cymbals())
+        self.hihat = stream.Part()
+        self.hihat.append(instrument.Cymbals())
 
     def sync_parts(self):
         self.score.insert(0, self.kick)
         self.score.insert(0, self.snare)
-        self.score.insert(0, self.cymbals)
+        self.score.insert(0, self.hihat)
         
     def set_ts(self, ts):
         ts = meter.TimeSignature(ts)
@@ -91,13 +91,13 @@ class Drummer:
 
     def count_in(self, bars=1, part=None):
         if part is None:
-            part = self.cymbals
+            part = self.hihat
         for _ in range(bars):
             self.accent_note(75, part=part)
             self.rest(part=self.kick)
             self.rest(part=self.snare)
             for i in range(self.beats - 1):
-                self.note(75, part=self.cymbals)
+                self.note(75, part=self.hihat)
                 self.rest(part=self.kick)
                 self.rest(part=self.snare)
 
@@ -118,7 +118,7 @@ class Drummer:
             for pattern_str in patterns['snare']:
                 for bit in pattern_str:
                     vary[bit](self, patch=38, dur=duration, part=self.snare)
-        if 'cymbals' in patterns:
-            for pattern_str in patterns['cymbals']:
+        if 'hihat' in patterns:
+            for pattern_str in patterns['hihat']:
                 for bit in pattern_str:
-                    vary[bit](self, patch=42, dur=duration, part=self.cymbals)
+                    vary[bit](self, patch=42, dur=duration, part=self.hihat)
