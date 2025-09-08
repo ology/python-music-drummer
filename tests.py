@@ -15,6 +15,12 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.divisions, 4)
         self.assertEqual(d.volume, 100)
         self.assertEqual(d.bars, 4)
+        self.assertIn('kick', d.instruments)
+        self.assertEqual(d.instruments['kick']['num'], 35)
+        self.assertIn('snare', d.instruments)
+        self.assertEqual(d.instruments['snare']['num'], 38)
+        self.assertIn('hihat', d.instruments)
+        self.assertEqual(d.instruments['hihat']['num'], 42)
 
     def test_bpm(self):
         d = Drummer()
@@ -44,8 +50,6 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), 4 + 8)
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
-        # print(d.counter)
-        # d.score.show('text')
 
 if __name__ == '__main__':
     unittest.main()
