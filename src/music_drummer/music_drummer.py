@@ -122,3 +122,8 @@ class Drummer:
             for pattern_str in patterns['hihat']:
                 for bit in pattern_str:
                     vary[bit](self, patch=self.instruments['hihat']['num'], dur=duration, part=self.hihat)
+
+    def roll(self, duration=1, subdivisions=4):
+        patch = self.instruments['snare']['num']
+        for _ in range(subdivisions):
+            self.note(patch, dur=duration/subdivisions, part=self.snare)
