@@ -1,5 +1,8 @@
-0.1.1 2025-01-27
+0.1.2 2025-09-08
+    - Simplify handling of instrument patches.
+
+0.1.1 2025-09-08
     - Fix the docs.
 
-0.1.0 2025-01-27
+0.1.0 2025-09-08
     - Initial creation
