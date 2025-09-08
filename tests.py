@@ -32,6 +32,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 4)
 
+    def test_patterns(self):
         d = Drummer()
         d.count_in()
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), d.beats)
@@ -45,7 +46,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
 
         # print(d.counter)
-        d.score.show('text')
+        d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
