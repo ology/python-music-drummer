@@ -10,7 +10,6 @@ class TestDrummer(unittest.TestCase):
     def test_basics(self):
         d = Drummer()
         self.assertIsInstance(d.score, stream.base.Score)
-
         self.assertEqual(d.channel, 9)
         self.assertEqual(d.counter, 0)
         self.assertEqual(d.beats, 4)
@@ -18,10 +17,14 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.volume, 100)
         self.assertEqual(d.bars, 4)
 
+    def test_bpm(self):
+        d = Drummer()
         self.assertEqual(d.bpm, 120)
         d.set_bpm(99)
         self.assertEqual(d.bpm, 99)
 
+    def test_time_signature(self):
+        d = Drummer()
         self.assertEqual(d.score.timeSignature.ratioString, '4/4')
         d.set_ts('5/8')
         self.assertEqual(d.score.timeSignature.ratioString, '5/8')
@@ -46,7 +49,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
 
         # print(d.counter)
-        d.score.show('midi')
+        d.score.show('text')
 
 if __name__ == '__main__':
     unittest.main()
