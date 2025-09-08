@@ -43,7 +43,7 @@ class TestDrummer(unittest.TestCase):
 
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 3 + 2 + 4 + 8)
-        
+
         # print(d.counter)
         d.score.show('text')
 
