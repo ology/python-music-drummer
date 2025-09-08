@@ -35,7 +35,7 @@ class Drummer:
         self.snare = stream.Part()
         self.snare.append(instrument.SnareDrum())
         self.hihat = stream.Part()
-        self.hihat.append(instrument.Cymbals())
+        self.hihat.append(instrument.HiHatCymbal())
 
     def sync_parts(self):
         self.score.insert(0, self.kick)
