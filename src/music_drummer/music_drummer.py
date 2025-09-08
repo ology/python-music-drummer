@@ -21,7 +21,8 @@ class Drummer:
         # self.score.append(self.part)
         self.set_ts(self.signature)
         self.set_bpm(self.bpm)
-        self.score.append(instrument.Woodblock())
+        self.score.append(instrument.Percussion()) # XXX broken?
+        self.score.append(instrument.Woodblock())  # <- so this?
 
     def _init_parts(self):
         self.kick = stream.Measure()
@@ -31,10 +32,10 @@ class Drummer:
         self.hihat = stream.Measure()
         self.hihat.append(instrument.Cymbals())
 
-    def append_parts(self):
-        self.score.append(self.kick)
-        self.score.append(self.snare)
-        self.score.append(self.hihat)
+    def sync_parts(self):
+        self.score.insert(0, self.kick)
+        self.score.insert(0, self.snare)
+        self.score.insert(0, self.hihat)
         
     def set_ts(self, ts):
         ts = meter.TimeSignature(ts)
@@ -85,9 +86,9 @@ class Drummer:
 
     def count_in(self, bars=1):
         for _ in range(bars):
-            self.accent_note(75)
+            self.accent_note(75, part=self.hihat)
             for i in range(self.beats - 1):
-                self.note(75)
+                self.note(75, part=self.hihat)
 
     def pattern(self, patch=38, patterns=None, duration=1/4, vary=None):
         if not patterns:

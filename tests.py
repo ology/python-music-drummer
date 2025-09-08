@@ -34,13 +34,13 @@ class TestDrummer(unittest.TestCase):
 
         d = Drummer()
         d.count_in(1)
-        self.assertEqual(len(d.score.getElementsByClass('Note')), d.beats)
+        self.assertEqual(len(d.hihat.getElementsByClass('Note')), d.beats)
 
-        d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '1010101010101010'})
-        d.append_parts()
+        # d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '1010101010101010'})
+        d.sync_parts()
 
         print(d.counter)
-        d.score.show('midi')
+        d.score.show('text')
 
     # def test_pattern(self):
     #     d = Drummer()
