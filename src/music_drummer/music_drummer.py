@@ -84,9 +84,11 @@ class Drummer:
             accent = self.accent
         self.note(num, dur=dur, volume=volume - accent, part=part)
 
-    def count_in(self, bars=1):
+    def count_in(self, bars=1, part=None):
+        if part is None:
+            part = self.hihat
         for _ in range(bars):
-            self.accent_note(75, part=self.hihat)
+            self.accent_note(75, part=part)
             for i in range(self.beats - 1):
                 self.note(75, part=self.hihat)
 
