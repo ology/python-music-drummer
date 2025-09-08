@@ -33,7 +33,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.divisions, 4)
 
         d = Drummer()
-        d.count_in(1)
+        d.count_in()
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), d.beats)
 
         d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '1010101010101010'})
