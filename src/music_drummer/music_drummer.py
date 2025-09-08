@@ -25,11 +25,11 @@ class Drummer:
         self.score.append(instrument.Woodblock())  # <- so this?
 
     def _init_parts(self):
-        self.kick = stream.Measure()
+        self.kick = stream.Part()
         self.kick.append(instrument.BassDrum())
-        self.snare = stream.Measure()
+        self.snare = stream.Part()
         self.snare.append(instrument.SnareDrum())
-        self.hihat = stream.Measure()
+        self.hihat = stream.Part()
         self.hihat.append(instrument.Cymbals())
 
     def sync_parts(self):
