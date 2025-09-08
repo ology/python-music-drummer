@@ -47,17 +47,5 @@ class TestDrummer(unittest.TestCase):
         # print(d.counter)
         d.score.show('text')
 
-    # def test_pattern(self):
-    #     d = Drummer()
-    #     d.pattern(instrument=d.open_hh, patterns=['11111'])
-    #     expect = [
-    #         ['note',   0, 96, 9, 46, 100],
-    #         ['note',  96, 96, 9, 46, 100],
-    #         ['note', 192, 96, 9, 46, 100],
-    #         ['note', 288, 96, 9, 46, 100],
-    #         ['note', 384, 96, 9, 46, 100],
-    #     ]
-    #     self.assertEqual(d.score[4:9], expect)
-
 if __name__ == '__main__':
     unittest.main()
