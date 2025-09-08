@@ -40,7 +40,7 @@ class TestDrummer(unittest.TestCase):
         d.sync_parts()
 
         print(d.counter)
-        d.score.show('text')
+        d.score.show('midi')
 
     # def test_pattern(self):
     #     d = Drummer()
