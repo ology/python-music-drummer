@@ -19,11 +19,11 @@ class Drummer:
         }
         self._init_score()
         self._init_parts()
-        self.set_ts(self.signature)
+        # self.set_ts(self.signature)
+        # self.set_bpm(self.bpm)
 
     def _init_score(self):
         self.score = stream.Score()
-        self.set_bpm(self.bpm)
         # self.score.append(instrument.Percussion()) # XXX broken?
         self.score.append(instrument.Woodblock())  # <- so this?
 
@@ -40,7 +40,9 @@ class Drummer:
         self.score.insert(0, self.snare)
         self.score.insert(0, self.hihat)
         
-    def set_ts(self, ts):
+    def set_ts(self, ts=None):
+        if not ts:
+            ts = self.signature
         ts = meter.TimeSignature(ts)
         self.beats = ts.numerator
         self.divisions = ts.denominator

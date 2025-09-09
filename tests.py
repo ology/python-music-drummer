@@ -11,8 +11,6 @@ class TestDrummer(unittest.TestCase):
         d = Drummer()
         self.assertIsInstance(d.score, stream.base.Score)
         self.assertEqual(d.counter, 0)
-        self.assertEqual(d.beats, 4)
-        self.assertEqual(d.divisions, 4)
         self.assertEqual(d.volume, 100)
         self.assertEqual(d.bars, 4)
         self.assertIn('kick', d.instruments)
@@ -29,15 +27,21 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.bpm, 120)
         d.set_bpm(99)
         self.assertEqual(d.bpm, 99)
+        # d.sync_parts()
+        # d.score.show('text')
 
     def test_time_signature(self):
         d = Drummer()
+        d.set_ts()
         self.assertEqual(d.kick.timeSignature.ratioString, '4/4')
+        self.assertEqual(d.beats, 4)
+        self.assertEqual(d.divisions, 4)
         d.set_ts('5/8')
         self.assertEqual(d.kick.timeSignature.ratioString, '5/8')
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 8)
         d = Drummer(signature='5/4')
+        d.set_ts()
         self.assertEqual(d.kick.timeSignature.ratioString, '5/4')
         self.assertEqual(d.beats, 5)
         self.assertEqual(d.divisions, 4)
@@ -49,6 +53,7 @@ class TestDrummer(unittest.TestCase):
 
     def test_patterns(self):
         d = Drummer()
+        d.set_ts()
         d.count_in()
         self.assertEqual(len(d.hihat.getElementsByClass('Note')), d.beats)
         d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '1010101010101010'})
