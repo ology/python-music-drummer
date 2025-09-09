@@ -23,16 +23,12 @@ class Drummer:
             'cymbals': stream.Part(),
             'percussion': stream.Part(),
         }
-        self._init_score()
-
-    def _init_score(self):
         self.score = stream.Score()
-        # self.score.append(instrument.Percussion()) # XXX broken?
-        self.score.append(instrument.Woodblock())  # <- so this?
 
     def sync_parts(self):
-        for score in self.parts.values():
-            self.score.insert(0, score)
+        for part in self.parts.values():
+            part.append(instrument.Woodblock())
+            self.score.insert(0, part)
 
     def set_ts(self, ts=None):
         if not ts:
@@ -42,8 +38,8 @@ class Drummer:
         ts = meter.TimeSignature(ts)
         self.beats = ts.numerator
         self.divisions = ts.denominator
-        for inst in self.parts.values():
-            inst.timeSignature = ts
+        for part in self.parts.values():
+            part.timeSignature = ts
 
     def set_bpm(self, bpm=None):
         if not bpm:
