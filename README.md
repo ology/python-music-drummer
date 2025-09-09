@@ -13,7 +13,7 @@ from music_drummer import Drummer
 # Ex 1 - basic 4/4 metronome groove:
 d = Drummer()
 d.set_bpm(60) # set the beats per minute
-d.set_ts('5/8') # set the default time signature of 4/4
+d.set_ts() # set the default time signature of 4/4
 # add a 16-beat phrase for 64 measures
 for _ in range(64):
     d.pattern(
