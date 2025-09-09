@@ -102,11 +102,11 @@ class Drummer:
             accent = self.accent
         self.note(name, duration=duration, volume=volume - accent)
 
-    def count_in(self, bars=1):
+    def count_in(self, patch='hihat', bars=1):
         for _ in range(bars):
-            self.accent_note('hihat')
+            self.accent_note(patch)
             for i in range(self.beats - 1):
-                self.note('hihat')
+                self.note(patch)
 
     def pattern(self, patterns=None, duration=1/4, vary=None):
         if not patterns:
