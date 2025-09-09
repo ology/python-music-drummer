@@ -39,6 +39,8 @@ class TestDrummer(unittest.TestCase):
 
     def test_instrument(self):
         d = Drummer()
+        kit = d.instrument_map()
+        self.assertEqual(len(kit), 38)
         patch = d.instrument_map(d.kit['kick']['patch'])
         self.assertEqual(patch['num'], 35)
         d.set_instrument('kick', 'kick2')

@@ -134,7 +134,7 @@ class Drummer:
             self.note(name, duration=duration/subdivisions, volume=int(volume))
             volume += factor
 
-    def instrument_map(self, key):
+    def instrument_map(self, key=None):
         kit = {
             'kick1': { 'num': 35, 'name': 'Acoustic Bass Drum', 'obj': instrument.BassDrum() },
             'kick2': { 'num': 36, 'name': 'Bass Drum 1', 'obj': instrument.BassDrum() },
@@ -175,4 +175,7 @@ class Drummer:
             'triangle1': { 'num': 81, 'name': 'Open Triangle', 'obj': instrument.Triangle() },
             'triangle2': { 'num': 82, 'name': 'Mute Triangle', 'obj': instrument.Triangle() },
         }
-        return kit.get(key)
+        if key:
+            return kit.get(key)
+        else:
+            return kit
