@@ -1,6 +1,5 @@
 from music21 import stream, note, tempo, meter, instrument
 from music21 import duration as m21duration
-from requests import patch
 
 class Drummer:
     STRAIGHT = 50
