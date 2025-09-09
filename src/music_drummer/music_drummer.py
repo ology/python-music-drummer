@@ -36,11 +36,8 @@ class Drummer:
         for part in self.kit.values():
             part['part'].timeSignature = ts
 
-    def set_bpm(self, bpm=None):
-        if not bpm:
-            bpm = self.bpm
-        else:
-            self.bpm = bpm
+    def set_bpm(self, bpm):
+        self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
     def set_instrument(self, name, patch):
