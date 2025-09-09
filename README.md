@@ -3,6 +3,9 @@ Glorified Metronome
 
 The methods of this package depend upon `music21`.
 
+For this package (and `music21` too), a `duration` of `1` is a
+quarter-note. So, `1/2` would be an eighth-note, etc.
+
 ## SYNOPSIS
 ```python
 from music_drummer import Drummer
