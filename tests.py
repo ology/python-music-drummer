@@ -71,19 +71,19 @@ class TestDrummer(unittest.TestCase):
 
     def test_roll(self):
         d = Drummer()
-        d.roll()
+        d.roll('snare')
         self.assertEqual(d.instruments['snare']['part'].getElementsByClass('Note')[0].duration.quarterLength, 1/4)
         self.assertEqual(len(d.instruments['snare']['part'].getElementsByClass('Note')), 4)
         d = Drummer()
-        d.roll(subdivisions=8)
+        d.roll('snare', subdivisions=8)
         self.assertEqual(d.instruments['snare']['part'].getElementsByClass('Note')[0].duration.quarterLength, 1/8)
         self.assertEqual(len(d.instruments['snare']['part'].getElementsByClass('Note')), 8)
         d = Drummer()
-        d.roll(duration=1/2, subdivisions=7)
+        d.roll('snare', duration=1/2, subdivisions=7)
         self.assertEqual(float(d.instruments['snare']['part'].getElementsByClass('Note')[0].duration.quarterLength), 1/14)
         self.assertEqual(len(d.instruments['snare']['part'].getElementsByClass('Note')), 7)
         d = Drummer()
-        d.roll(crescendo=[100, 127])
+        d.roll('snare', crescendo=[100, 127])
         self.assertEqual(d.instruments['snare']['part'].getElementsByClass('Note')[0].volume.velocity, 100)
         self.assertEqual(d.instruments['snare']['part'].getElementsByClass('Note')[-1].volume.velocity, 127)
 
