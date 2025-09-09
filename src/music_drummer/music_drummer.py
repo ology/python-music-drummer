@@ -14,21 +14,16 @@ class Drummer:
         self.signature = signature
         self.bpm = bpm
         self.kit = {
-            'kick': 'kick1',
-            'snare': 'snare1',
-            'hihat': 'hihat1',
-        }
-        self.parts = {
-            'drums': stream.Part(),
-            'cymbals': stream.Part(),
-            'percussion': stream.Part(),
+            'kick': { 'instrument': 'kick1', 'part': stream.Part() },
+            'snare': { 'instrument': 'snare1', 'part': stream.Part() },
+            'hihat': { 'instrument': 'hihat1', 'part': stream.Part() },
         }
         self.score = stream.Score()
 
     def sync_parts(self):
-        for part in self.parts.values():
-            part.append(instrument.Woodblock())
-            self.score.insert(0, part)
+        for part in self.kit.values():
+            part['part'].append(instrument.Woodblock())
+            self.score.insert(0, part['part'])
 
     def set_ts(self, ts=None):
         if not ts:
@@ -38,8 +33,8 @@ class Drummer:
         ts = meter.TimeSignature(ts)
         self.beats = ts.numerator
         self.divisions = ts.denominator
-        for part in self.parts.values():
-            part.timeSignature = ts
+        for part in self.kit.values():
+            part['part'].timeSignature = ts
 
     def set_bpm(self, bpm=None):
         if not bpm:
@@ -49,29 +44,32 @@ class Drummer:
         self.score.append(tempo.MetronomeMark(number=bpm))
 
     def set_instrument(self, name, patch):
-        self.kit[name] = patch
+        if patch in self.kit:
+            self.kit[name]['instrument'] = patch
+        else:
+            self.kit[name] = { 'instrument': patch, 'part': stream.Part() }
 
     def rest(self, name, duration=1.0):
         n = note.Rest()
         n.duration = m21duration.Duration(duration)
-        patch = self.instrument_map(self.kit[name])
-        self.parts[patch['type']].append(n)
+        patch = self.instrument_map(self.kit[name]['instrument'])
+        self.kit[name]['part'].append(n)
         if duration:
             self.counter += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
-        patch = self.instrument_map(self.kit[name])
+        patch = self.instrument_map(self.kit[name]['instrument'])
         if volume is None:
             volume = self.volume
         if flam > 0:
             grace = note.Note(patch['num'])
             grace.duration = m21duration.Duration(flam)
-            self.parts[patch['type']].append(grace)
+            self.kit[name]['part'].append(grace)
         n = note.Note(patch['num'])
         n.volume.velocity = volume
         n.duration = m21duration.Duration(duration - flam)
         if name:
-            self.parts[patch['type']].append(n)
+            self.kit[name]['part'].append(n)
         else:
             self.score.append(n)
         if duration:
