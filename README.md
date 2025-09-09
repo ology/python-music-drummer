@@ -6,7 +6,6 @@ The methods of this package depend upon `music21`.
 ## SYNOPSIS
 ```python
 from music_drummer import Drummer
-from music21 import instrument
 
 d = Drummer()
 
