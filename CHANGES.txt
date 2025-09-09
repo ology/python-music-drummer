@@ -1,3 +1,6 @@
+0.1.19 2025-09-09
+    - Fix instruments.
+
 0.1.18 2025-09-09
     - Remove cruft.
 
