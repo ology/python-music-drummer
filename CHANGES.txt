@@ -1,3 +1,7 @@
+0.1.25 2025-09-09
+    - Make counter per-part.
+    - Remove cruft.
+
 0.1.24 2025-09-09
     - Improve docs ever-so-slightly.
 

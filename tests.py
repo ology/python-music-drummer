@@ -64,6 +64,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 12)
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
+        self.assertEqual(d.kit['hihat']['counter'], 8.0)
         # d.score.show('midi')
 
     # def test_5_8_signature(self):
@@ -77,18 +78,23 @@ class TestDrummer(unittest.TestCase):
         d.roll('snare')
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[0].duration.quarterLength, 1/4)
         self.assertEqual(len(d.kit['snare']['part'].getElementsByClass('Note')), 4)
+        self.assertEqual(d.kit['snare']['counter'], 1.0)
         d = Drummer()
         d.roll('snare', subdivisions=8)
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[0].duration.quarterLength, 1/8)
         self.assertEqual(len(d.kit['snare']['part'].getElementsByClass('Note')), 8)
+        self.assertEqual(d.kit['snare']['counter'], 1.0)
         d = Drummer()
         d.roll('snare', duration=1/2, subdivisions=7)
         self.assertEqual(float(d.kit['snare']['part'].getElementsByClass('Note')[0].duration.quarterLength), 1/14)
         self.assertEqual(len(d.kit['snare']['part'].getElementsByClass('Note')), 7)
+        self.assertGreaterEqual(d.kit['snare']['counter'], 0.49)
+        self.assertLessEqual(d.kit['snare']['counter'], 0.5)
         d = Drummer()
         d.roll('snare', crescendo=[100, 127])
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[0].volume.velocity, 100)
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[-1].volume.velocity, 127)
+        self.assertEqual(d.kit['snare']['counter'], 1.0)
 
     def test_flam(self):
         d = Drummer()
@@ -98,6 +104,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.kit['snare']['part'].getElementsByClass('Note')), 4)
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[1].duration.quarterLength, 1/16)
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[2].duration.quarterLength, 1/2 - 1/16)
+        self.assertEqual(d.kit['snare']['counter'], 1.5)
 
 if __name__ == '__main__':
     unittest.main()

@@ -4,8 +4,7 @@ from music21 import duration as m21duration
 class Drummer:
     STRAIGHT = 50
 
-    def __init__(self, file='Drummer.mid', bpm=120, volume=100, accent=20, signature='4/4', bars=4):
-        self.file = file
+    def __init__(self, bpm=120, volume=100, accent=20, signature='4/4', bars=4):
         self.volume = volume
         self.bars = bars
         self.counter = 0
@@ -13,9 +12,9 @@ class Drummer:
         self.signature = signature
         self.bpm = bpm
         self.kit = {
-            'kick': { 'instrument': 'kick1', 'part': stream.Part() },
-            'snare': { 'instrument': 'snare1', 'part': stream.Part() },
-            'hihat': { 'instrument': 'hihat1', 'part': stream.Part() },
+            'kick': { 'instrument': 'kick1', 'part': stream.Part(), 'counter': 0 },
+            'snare': { 'instrument': 'snare1', 'part': stream.Part(), 'counter': 0 },
+            'hihat': { 'instrument': 'hihat1', 'part': stream.Part(), 'counter': 0 },
         }
         self.score = stream.Score()
 
@@ -44,7 +43,7 @@ class Drummer:
         if patch in self.kit:
             self.kit[name]['instrument'] = patch
         else:
-            self.kit[name] = { 'instrument': patch, 'part': stream.Part() }
+            self.kit[name] = { 'instrument': patch, 'part': stream.Part(), 'counter': 0 }
 
     def rest(self, name, duration=1.0):
         n = note.Rest()
@@ -52,7 +51,7 @@ class Drummer:
         patch = self.instrument_map(self.kit[name]['instrument'])
         self.kit[name]['part'].append(n)
         if duration:
-            self.counter += duration
+            self.kit[name]['counter'] += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
         patch = self.instrument_map(self.kit[name]['instrument'])
@@ -70,7 +69,7 @@ class Drummer:
         else:
             self.score.append(n)
         if duration:
-            self.counter += duration
+            self.kit[name]['counter'] += duration
 
     def accent_note(self, name, duration=1.0, volume=None, accent=None):
         if volume is None:
