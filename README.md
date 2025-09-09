@@ -24,7 +24,7 @@ for _ in range(64):
         },
     )
 d.sync_parts() # make the parts play simultaneously
-d.score.show() # or text, midi, etc. see music21 docs
+d.score.show('midi') # or nothing, text, etc. see music21 docs
 
 # Ex 2 - 5/8 groove with intro:
 d = Drummer()
