@@ -21,8 +21,9 @@ class Drummer:
 
     def sync_parts(self):
         for part in self.kit.values():
-            part['part'].append(instrument.Woodblock())
+            patch = self.instrument_map(part['instrument'])
             self.score.insert(0, part['part'])
+            part['part'].append(patch['obj'])
 
     def set_ts(self, ts=None):
         if not ts:
