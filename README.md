@@ -20,7 +20,7 @@ d.note('snare', duration=1/2, flam=1/16, part=d.snare)
 d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
 
-# add a roll of 5 notes for an eighth-note, increasing in volume
+# add a 5-note snare roll for an eighth-note, increasing in volume
 d.roll(duration=1/2, subdivisions=5, crescendo=[100, 127])
 d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
