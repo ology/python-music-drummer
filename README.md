@@ -12,24 +12,28 @@ d = Drummer()
 
 d.set_instrument('kick', 36) # change the kick patch from 35
 d.set_instrument('snare', 40) # change the snare patch from 38
+# add a crash
+d.set_instrument('crash', 49, obj=instrument.CrashCymbals())
 
 d.set_bpm(99) # change the beats per minute from 120
 d.set_ts('5/8') # change the time signature from 4/4
 
 d.count_in(2) # count-in on the hi-hats for 2 measures
+d.rest('kick', duration=5)
+d.rest('snare', duration=5)
+d.rest('crash', duration=5)
 
 # add a eighth-note snare flam to the score
 d.note('snare', duration=1/2, flam=1/16)
 d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
+d.rest('crash', duration=1/2)
 
 # add a 5-note snare roll for an eighth-note, increasing in volume
 d.roll('snare', duration=1/2, subdivisions=5, crescendo=[100, 127])
 d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
-
-# add a crash
-d.set_instrument('crash', 49, obj=instrument.CrashCymbals())
+d.rest('crash', duration=1/2)
 
 # crash and kick!
 d.note('kick', duration=1/2)
