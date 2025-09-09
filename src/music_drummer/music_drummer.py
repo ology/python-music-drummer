@@ -13,14 +13,12 @@ class Drummer:
         self.signature = signature
         self.bpm = bpm
         self.instruments = {
-            'kick': { 'num': 35, 'obj': instrument.BassDrum() },
-            'snare': { 'num': 38, 'obj': instrument.SnareDrum() },
-            'hihat': { 'num': 42, 'obj': instrument.HiHatCymbal() },
+            'kick': { 'num': 35, 'obj': instrument.BassDrum(), 'part': stream.Part() },
+            'snare': { 'num': 38, 'obj': instrument.SnareDrum(), 'part': stream.Part() },
+            'hihat': { 'num': 42, 'obj': instrument.HiHatCymbal(), 'part': stream.Part() },
         }
         self._init_score()
         self._init_parts()
-        # self.set_ts(self.signature)
-        # self.set_bpm(self.bpm)
 
     def _init_score(self):
         self.score = stream.Score()
@@ -28,30 +26,29 @@ class Drummer:
         self.score.append(instrument.Woodblock())  # <- so this?
 
     def _init_parts(self):
-        self.kick = stream.Part()
-        self.kick.append(self.instruments['kick']['obj'])
-        self.snare = stream.Part()
-        self.snare.append(self.instruments['snare']['obj'])
-        self.hihat = stream.Part()
-        self.hihat.append(self.instruments['hihat']['obj'])
+        for inst in self.instruments.values():
+            inst['part'].append(inst['obj'])
 
     def sync_parts(self):
-        self.score.insert(0, self.kick)
-        self.score.insert(0, self.snare)
-        self.score.insert(0, self.hihat)
-        
+        for inst in self.instruments.values():
+            self.score.insert(0, inst['part'])
+
     def set_ts(self, ts=None):
         if not ts:
             ts = self.signature
+        else:
+            self.signature = ts
         ts = meter.TimeSignature(ts)
         self.beats = ts.numerator
         self.divisions = ts.denominator
-        self.kick.timeSignature = ts
-        self.snare.timeSignature = ts
-        self.hihat.timeSignature = ts
+        for inst in self.instruments.values():
+            inst['part'].timeSignature = ts
 
-    def set_bpm(self, bpm):
-        self.bpm = bpm
+    def set_bpm(self, bpm=None):
+        if not bpm:
+            bpm = self.bpm
+        else:
+            self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
     def set_instrument(self, name, num):
@@ -101,15 +98,15 @@ class Drummer:
 
     def count_in(self, bars=1, part=None):
         if part is None:
-            part = self.hihat
+            part = self.instruments['hihat']['part']
         for _ in range(bars):
             self.accent_note('hihat', part=part)
-            self.rest(part=self.kick)
-            self.rest(part=self.snare)
+            self.rest(part=self.instruments['kick']['part'])
+            self.rest(part=self.instruments['snare']['part'])
             for i in range(self.beats - 1):
                 self.note('hihat', part=part)
-                self.rest(part=self.kick)
-                self.rest(part=self.snare)
+                self.rest(part=self.instruments['kick']['part'])
+                self.rest(part=self.instruments['snare']['part'])
 
     def pattern(self, patterns=None, duration=1/4, vary=None):
         if not patterns:
@@ -124,15 +121,15 @@ class Drummer:
         if 'kick' in patterns:
             for pattern_str in patterns['kick']:
                 for bit in pattern_str:
-                    vary[bit](self, patch='kick', duration=duration, part=self.kick)
+                    vary[bit](self, patch='kick', duration=duration, part=self.instruments['kick']['part'])
         if 'snare' in patterns:
             for pattern_str in patterns['snare']:
                 for bit in pattern_str:
-                    vary[bit](self, patch='snare', duration=duration, part=self.snare)
+                    vary[bit](self, patch='snare', duration=duration, part=self.instruments['snare']['part'])
         if 'hihat' in patterns:
             for pattern_str in patterns['hihat']:
                 for bit in pattern_str:
-                    vary[bit](self, patch='hihat', duration=duration, part=self.hihat)
+                    vary[bit](self, patch='hihat', duration=duration, part=self.instruments['hihat']['part'])
 
     def roll(self, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
@@ -142,5 +139,5 @@ class Drummer:
             factor = round((crescendo[1] - crescendo[0]) / (subdivisions - 1))
             volume = crescendo[0]
         for _ in range(subdivisions):
-            self.note('snare', duration=duration/subdivisions, volume=int(volume), part=self.snare)
+            self.note('snare', duration=duration/subdivisions, volume=int(volume), part=self.instruments['snare']['part'])
             volume += factor
