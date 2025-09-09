@@ -23,7 +23,7 @@ class Drummer:
         for part in self.kit.values():
             patch = self.instrument_map(part['instrument'])
             self.score.insert(0, part['part'])
-            part['part'].append(patch['obj'])
+            part['part'].insert(0, patch['obj'])
 
     def set_ts(self, ts=None):
         if not ts:
