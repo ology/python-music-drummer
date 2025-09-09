@@ -55,12 +55,13 @@ class TestDrummer(unittest.TestCase):
         d = Drummer()
         d.set_ts()
         d.count_in()
+        d.rest('kick', duration=4)
         self.assertEqual(len(d.parts['cymbals'].getElementsByClass('Note')), d.beats)
-        # d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '1010101010101010'})
-        # self.assertEqual(len(d.parts['drums'].getElementsByClass('Note')), 5)
-        # self.assertEqual(len(d.parts['cymbals'].getElementsByClass('Note')), 12)
+        d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '1010101010101010'})
+        self.assertEqual(len(d.parts['drums'].getElementsByClass('Note')), 5)
+        self.assertEqual(len(d.parts['cymbals'].getElementsByClass('Note')), 12)
         d.sync_parts()
-        # self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
+        self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
         d.score.show('midi')
 
     # def test_5_8_signature(self):

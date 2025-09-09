@@ -60,18 +60,18 @@ class Drummer:
             self.counter += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
-        inst = self.instrument_map(self.kit[name])
+        patch = self.instrument_map(self.kit[name])
         if volume is None:
             volume = self.volume
         if flam > 0:
-            grace = note.Note(inst['num'])
+            grace = note.Note(patch['num'])
             grace.duration = m21duration.Duration(flam)
-            self.parts[inst['type']].append(grace)
-        n = note.Note(inst['num'])
+            self.parts[patch['type']].append(grace)
+        n = note.Note(patch['num'])
         n.volume.velocity = volume
         n.duration = m21duration.Duration(duration - flam)
         if name:
-            self.parts[inst['type']].append(n)
+            self.parts[patch['type']].append(n)
         else:
             self.score.append(n)
         if duration:
