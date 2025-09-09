@@ -50,7 +50,7 @@ class TestDrummer(unittest.TestCase):
         d.note('crash')
         self.assertEqual(len(d.instruments['crash']['part'].getElementsByClass('Note')), 1)
 
-    def test_patterns(self):
+    def test_pattern(self):
         d = Drummer()
         d.set_ts()
         d.count_in()
