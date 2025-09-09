@@ -10,7 +10,6 @@ class TestDrummer(unittest.TestCase):
         self.assertIsInstance(d.score, stream.base.Score)
         self.assertEqual(d.counter, 0)
         self.assertEqual(d.volume, 100)
-        self.assertEqual(d.bars, 4)
         self.assertIn('kick', d.kit)
         self.assertIn('snare', d.kit)
         self.assertIn('hihat', d.kit)

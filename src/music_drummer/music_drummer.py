@@ -2,9 +2,8 @@ from music21 import stream, note, tempo, meter, instrument
 from music21 import duration as m21duration
 
 class Drummer:
-    def __init__(self, bpm=120, volume=100, accent=20, signature='4/4', bars=4):
+    def __init__(self, bpm=120, volume=100, accent=20, signature='4/4'):
         self.volume = volume
-        self.bars = bars
         self.counter = 0
         self.accent = accent
         self.signature = signature
