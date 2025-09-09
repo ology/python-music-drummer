@@ -58,6 +58,7 @@ class Drummer:
             volume = self.volume
         if flam > 0:
             grace = note.Note(patch['num'])
+            grace.volume.velocity = volume
             grace.duration = m21duration.Duration(flam)
             self.kit[name]['part'].append(grace)
         n = note.Note(patch['num'])

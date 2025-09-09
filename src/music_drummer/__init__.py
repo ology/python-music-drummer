@@ -1,4 +1,4 @@
 # The root of the entire project
 from music_drummer.music_drummer import Drummer
 
-__version__ = "0.1.26"
+__version__ = "0.1.27"
