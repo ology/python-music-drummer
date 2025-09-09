@@ -19,9 +19,9 @@ d.set_bpm(99) # change the beats per minute from 120
 d.set_ts('5/8') # change the time signature from 4/4
 
 d.count_in(2) # count-in on the hi-hats for 2 measures
-d.rest('kick', duration=5)
-d.rest('snare', duration=5)
-d.rest('crash', duration=5)
+d.rest('kick', duration=10)
+d.rest('snare', duration=10)
+d.rest('crash', duration=10)
 
 # add a eighth-note snare flam to the score
 d.note('snare', duration=1/2, flam=1/16)
