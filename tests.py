@@ -69,12 +69,6 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         # d.score.show('midi')
 
-    # def test_5_8_signature(self):
-    #     d = Drummer(signature='5/8')
-    #     d.count_in()
-    #     for _ in range(4):
-    #         d.pattern(patterns={'kick': '1000000010', 'snare': '0000001000', 'hihat': '1111111111'}, duration=1/2)
-
     def test_roll(self):
         d = Drummer()
         d.roll('snare')
