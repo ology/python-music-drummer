@@ -118,18 +118,11 @@ class Drummer:
                 '1': lambda self, **args: self.note(args['patch'], duration=args['duration']),
             }
 
-        if 'kick' in patterns:
-            for pattern_str in patterns['kick']:
-                for bit in pattern_str:
-                    vary[bit](self, patch='kick', duration=duration)
-        if 'snare' in patterns:
-            for pattern_str in patterns['snare']:
-                for bit in pattern_str:
-                    vary[bit](self, patch='snare', duration=duration)
-        if 'hihat' in patterns:
-            for pattern_str in patterns['hihat']:
-                for bit in pattern_str:
-                    vary[bit](self, patch='hihat', duration=duration)
+        for inst in self.instruments.keys():
+            if inst in patterns:
+                for pattern_str in patterns[inst]:
+                    for bit in pattern_str:
+                        vary[bit](self, patch=inst, duration=duration)
 
     def roll(self, name, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
