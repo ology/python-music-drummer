@@ -1,8 +1,6 @@
 import sys
 sys.path.append('./src')
 import unittest
-import tempfile
-import os
 from music_drummer.music_drummer import Drummer
 from music21 import stream, instrument
 
