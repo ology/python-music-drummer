@@ -1,3 +1,6 @@
+0.1.22 2025-09-09
+    - Improve docs.
+
 0.1.21 2025-09-09
     - Simplify pattern().
 
