@@ -51,9 +51,15 @@ class Drummer:
             self.bpm = bpm
         self.score.append(tempo.MetronomeMark(number=bpm))
 
-    def set_instrument(self, name, num):
+    def set_instrument(self, name, num, obj=None):
         if name in self.instruments:
             self.instruments[name]['num'] = num
+        else:
+            self.instruments[name] = { 'num': num, 'part': stream.Part() }
+            if obj:
+                self.instruments[name]['obj'] = obj
+            else:
+                self.instruments[name]['obj'] = instrument.Woodblock()
 
     def rest(self, name, duration=1.0):
         n = note.Rest()

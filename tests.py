@@ -4,7 +4,7 @@ import unittest
 import tempfile
 import os
 from music_drummer.music_drummer import Drummer
-from music21 import stream
+from music21 import stream, instrument
 
 class TestDrummer(unittest.TestCase):
     def test_basics(self):
@@ -48,6 +48,9 @@ class TestDrummer(unittest.TestCase):
         d = Drummer()
         d.set_instrument('kick', 36)
         self.assertEqual(d.instruments['kick']['num'], 36)
+        d.set_instrument('crash', 49, obj=instrument.CrashCymbals())
+        d.note('crash')
+        self.assertEqual(len(d.instruments['crash']['part'].getElementsByClass('Note')), 1)
 
     def test_patterns(self):
         d = Drummer()
@@ -95,8 +98,6 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.instruments['snare']['part'].getElementsByClass('Note')), 4)
         self.assertEqual(d.instruments['snare']['part'].getElementsByClass('Note')[1].duration.quarterLength, 1/16)
         self.assertEqual(d.instruments['snare']['part'].getElementsByClass('Note')[2].duration.quarterLength, 1/2 - 1/16)
-        # d.sync_parts()
-        # d.snare.show('midi')
 
 if __name__ == '__main__':
     unittest.main()

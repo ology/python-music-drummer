@@ -27,6 +27,15 @@ d.roll('snare', duration=1/2, subdivisions=5, crescendo=[100, 127])
 d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
 
+# add a crash
+set_instrument('crash', 49, obj=instrument.CrashCymbals())
+
+# crash and kick!
+d.note('kick', duration=1/2)
+d.note('crash', duration=1/2)
+d.rest('snare', duration=1/2)
+d.rest('hihat', duration=1/2)
+
 # add an eighth-note phrase of 3 parts, to the score
 for _ in range(4):
     d.pattern(
