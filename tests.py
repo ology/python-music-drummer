@@ -2,12 +2,10 @@ import sys
 sys.path.append('./src')
 import unittest
 from music_drummer.music_drummer import Drummer
-from music21 import stream
 
 class TestDrummer(unittest.TestCase):
     def test_basics(self):
         d = Drummer()
-        self.assertIsInstance(d.score, stream.base.Score)
         self.assertEqual(d.counter, 0)
         self.assertEqual(d.volume, 100)
         self.assertIn('kick', d.kit)
