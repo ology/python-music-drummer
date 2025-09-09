@@ -27,8 +27,6 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.bpm, 120)
         d.set_bpm(99)
         self.assertEqual(d.bpm, 99)
-        # d.sync_parts()
-        # d.score.show('text')
 
     def test_time_signature(self):
         d = Drummer()
