@@ -10,6 +10,23 @@ quarter-note. So, `1/2` would be an eighth-note, etc.
 ```python
 from music_drummer import Drummer
 
+# Ex 1 - basic 4/4 metronome groove:
+d = Drummer()
+d.set_bpm(60) # set the beats per minute
+d.set_ts('5/8') # set the default time signature of 4/4
+# add a 16-beat phrase for 64 measures
+for _ in range(64):
+    d.pattern(
+        patterns={
+            'kick':  '1000000010000000',
+            'snare': '0000100000001000',
+            'hihat': '1010101010101010',
+        },
+    )
+d.sync_parts() # make the parts play simultaneously
+d.score.show() # or text, midi, etc. see music21 docs
+
+# Ex 2 - 5/8 groove with intro:
 d = Drummer()
 
 d.set_instrument('kick', 'kick2') # change to the electric kick
@@ -44,7 +61,7 @@ d.rest('snare', duration=1/2)
 d.rest('hihat', duration=1/2)
 
 # add a 4-part, 4-bar, eighth-note phrase to the score
-for _ in range(4):
+for _ in range(8):
     d.pattern(
         patterns={
             'kick':  '1000000010',
