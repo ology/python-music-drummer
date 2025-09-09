@@ -17,8 +17,6 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.instruments['snare']['num'], 38)
         self.assertIn('hihat', d.instruments)
         self.assertEqual(d.instruments['hihat']['num'], 42)
-        d.instruments['kick']['num'] = 36
-        self.assertEqual(d.instruments['kick']['num'], 36)
 
     def test_bpm(self):
         d = Drummer()
