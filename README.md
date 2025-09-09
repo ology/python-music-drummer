@@ -15,7 +15,7 @@ d.set_ts('5/8') # change the time signature from 4/4
 
 d.count_in(2) # count-in on the hi-hats for 2 measures
 
-# add a 64th-note flam to the score
+# add a eighth-note snare flam to the score
 d.note('snare', duration=1/2, flam=1/16, part=d.snare)
 d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
