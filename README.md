@@ -1,6 +1,8 @@
 # python-music-drummer
 Glorified Metronome
 
+The methods of this package depend upon `music21`.
+
 ## SYNOPSIS
 ```python
 from music_drummer import Drummer
