@@ -1,3 +1,6 @@
+0.1.11 2025-09-09
+    - Change how instrumentation works.
+
 0.1.10 2025-09-08
     - Fix pattern() and count_in().
 

@@ -10,10 +10,9 @@ from music21 import instrument
 
 d = Drummer()
 
-d.set_instrument('kick', 36) # change the kick patch from 35
-d.set_instrument('snare', 40) # change the snare patch from 38
-# add a crash
-d.set_instrument('crash', 49, obj=instrument.CrashCymbals())
+d.set_instrument('kick', 'kick2') # change to the electric kick
+d.set_instrument('snare', 'snare2') # change to the electric snare
+d.set_instrument('crash', 'crash1') # add a crash
 
 d.set_bpm(99) # change the beats per minute from 120
 d.set_ts('5/8') # change the time signature from 4/4
