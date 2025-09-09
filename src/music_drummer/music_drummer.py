@@ -92,21 +92,17 @@ class Drummer:
             for i in range(self.beats - 1):
                 self.note(patch)
 
-    def pattern(self, patterns=None, duration=1/4, vary=None):
+    def pattern(self, patterns=None, duration=1/4):
         if not patterns:
             return
-
-        if vary is None:
-            vary = {
-                '0': lambda self, **args: self.rest(args['patch'], duration=args['duration']),
-                '1': lambda self, **args: self.note(args['patch'], duration=args['duration']),
-            }
-
         for inst in self.kit.keys():
             if inst in patterns:
                 for pattern_str in patterns[inst]:
                     for bit in pattern_str:
-                        vary[bit](self, patch=inst, duration=duration)
+                        if bit == '0':
+                            self.rest(inst, duration=duration)
+                        else:
+                            self.note(inst, duration=duration)
 
     def roll(self, name, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
