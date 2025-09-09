@@ -29,7 +29,7 @@ d.rest('kick', duration=1/2)
 d.rest('hihat', duration=1/2)
 
 # add a crash
-set_instrument('crash', 49, obj=instrument.CrashCymbals())
+d.set_instrument('crash', 49, obj=instrument.CrashCymbals())
 
 # crash and kick!
 d.note('kick', duration=1/2)
