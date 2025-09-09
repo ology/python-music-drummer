@@ -44,7 +44,12 @@ d.rest('hihat', duration=1/2)
 # add an eighth-note phrase of 3 parts, to the score
 for _ in range(4):
     d.pattern(
-        patterns={ 'kick': '1000000010', 'snare': '0000001000', 'hihat': '1111111111' },
+        patterns={
+            'kick': '1000000010',
+            'snare': '0000001000',
+            'hihat': '1111111111',
+            'crash': '1000000000',
+        },
         duration=1/2
     )
 
