@@ -13,6 +13,7 @@ d = Drummer()
 d.set_instrument('kick', 'kick2') # change to the electric kick
 d.set_instrument('snare', 'snare2') # change to the electric snare
 d.set_instrument('crash', 'crash1') # add a crash
+# print(d.instrument_map()) # for the full list of known instruments
 
 d.set_bpm(99) # change the beats per minute from 120
 d.set_ts('5/8') # change the time signature from 4/4
