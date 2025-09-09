@@ -1,4 +1,4 @@
-# python-music-drummer
+# Music Drummer
 Glorified Metronome
 
 The methods of this package depend upon `music21`.
