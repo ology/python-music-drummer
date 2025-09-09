@@ -65,6 +65,8 @@ class TestDrummer(unittest.TestCase):
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
         self.assertEqual(d.kit['hihat']['counter'], 8.0)
+        self.assertEqual(d.kit['hihat']['counter'], d.kit['kick']['counter'])
+        self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         # d.score.show('midi')
 
     # def test_5_8_signature(self):
