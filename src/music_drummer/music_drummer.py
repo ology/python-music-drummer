@@ -48,7 +48,6 @@ class Drummer:
     def rest(self, name, duration=1.0):
         n = note.Rest()
         n.duration = m21duration.Duration(duration)
-        patch = self.instrument_map(self.kit[name]['instrument'])
         self.kit[name]['part'].append(n)
         if duration:
             self.kit[name]['counter'] += duration
@@ -64,10 +63,7 @@ class Drummer:
         n = note.Note(patch['num'])
         n.volume.velocity = volume
         n.duration = m21duration.Duration(duration - flam)
-        if name:
-            self.kit[name]['part'].append(n)
-        else:
-            self.score.append(n)
+        self.kit[name]['part'].append(n)
         if duration:
             self.kit[name]['counter'] += duration
 
