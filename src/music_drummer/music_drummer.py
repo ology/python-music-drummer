@@ -149,6 +149,9 @@ class Drummer:
     def write(self, filename='drums.mid', format='midi'):
         self.score.write(format, fp=filename)
 
+    def show(self, format='midi'):
+        self.score.show(format)
+
     def instrument_map(self, key=None):
         kit = {
             'kick1': { 'num': 35, 'name': 'Acoustic Bass Drum', 'obj': instrument.BassDrum() },

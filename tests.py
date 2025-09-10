@@ -73,7 +73,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
-        # d.score.show('midi')
+        # d.show('midi')
 
     def test_roll(self):
         d = Drummer()
@@ -165,7 +165,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.kit['percussion']['part'].getElementsByClass('Note')), 17)
         self.assertEqual(d.kit['percussion']['counter'], 17.0)
         # d.sync_parts()
-        # d.score.show('midi')
+        # d.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
