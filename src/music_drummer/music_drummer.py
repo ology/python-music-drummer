@@ -43,11 +43,19 @@ class Drummer:
             self.kit[name] = { 'instrument': patch, 'part': stream.Part(), 'counter': 0 }
 
     def rest(self, name, duration=1.0):
-        n = note.Rest()
-        n.duration = m21duration.Duration(duration)
-        self.kit[name]['part'].append(n)
-        if duration:
-            self.kit[name]['counter'] += duration
+        if isinstance(name, list):
+            for item in name:
+                n = note.Rest()
+                n.duration = m21duration.Duration(duration)
+                self.kit[item]['part'].append(n)
+                if duration:
+                    self.kit[item]['counter'] += duration
+        else:
+            n = note.Rest()
+            n.duration = m21duration.Duration(duration)
+            self.kit[name]['part'].append(n)
+            if duration:
+                self.kit[name]['counter'] += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
         if name == 'hihat' or name == 'closed':
