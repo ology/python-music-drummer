@@ -3,8 +3,21 @@ Glorified Metronome
 
 The methods of this package depend upon `music21`.
 
-For this package (and `music21` too), a `duration` of `1` is a
-quarter-note. So, `1/2` would be an eighth-note, etc.
+For this package (and `music21` too), a `duration` of `1` is a quarter-note. So, `1/2` would be an eighth-note, etc.
+
+The (general MIDI) kit is made up of the following instrument types (and defaults):
+```
+'kick' (default: 'kick1')
+'snare' (default: 'snare1')
+'hihat' (default: 'hihat1')
+'toms' (default 'tom3')
+'cymbals' (default: 'crash1')
+'percussion' (default: 'woodblock1')
+```
+
+Each above type includes a `music21` `Part` and a `counter` (that starts at `0` of course).
+
+The known instruments and their names, MIDI numbers, and types can be seen by printing the return of `instrument_map()`.
 
 ## SYNOPSIS
 ```python
