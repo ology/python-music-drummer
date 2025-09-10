@@ -126,9 +126,15 @@ class TestDrummer(unittest.TestCase):
         d = Drummer()
         d.note('crash1', duration=1/2)
         d.note('crash2', duration=1/2)
-        self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 2)
-        # d.sync_parts()
-        # d.score.show('midi')
+        d.note('china', duration=1/2)
+        d.note('splash', duration=1/2)
+        d.note('ride1', duration=1/2)
+        d.note('ride2', duration=1/2)
+        d.note('ridebell', duration=1/2)
+        self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 7)
+        self.assertEqual(d.kit['cymbals']['counter'], 3.5)
+        d.sync_parts()
+        d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()

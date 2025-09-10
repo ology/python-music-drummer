@@ -49,6 +49,15 @@ d.note('pedal', duration=1/2)
 d.note('closed', duration=1/2)
 d.rest(['snare', 'kick', 'crash'], duration=2)
 
+# 7 known cymbals:
+d.note('crash1', duration=1/2)
+d.note('crash2', duration=1/2)
+d.note('china', duration=1/2)
+d.note('splash', duration=1/2)
+d.note('ride1', duration=1/2)
+d.note('ride2', duration=1/2)
+d.note('ridebell', duration=1/2)
+
 # 6 known toms:
 d.note('tom1', duration=1/3)
 d.note('tom2', duration=1/3)

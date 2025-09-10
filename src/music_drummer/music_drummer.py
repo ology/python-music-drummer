@@ -62,8 +62,7 @@ class Drummer:
             n = note.Rest()
             n.duration = m21duration.Duration(duration)
             self.kit[item]['part'].append(n)
-            if duration:
-                self.kit[item]['counter'] += duration
+            self.kit[item]['counter'] += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
         if name == 'hihat' or name == 'closed':
@@ -94,8 +93,7 @@ class Drummer:
         n.volume.velocity = volume
         n.duration = m21duration.Duration(duration - flam)
         self.kit[name]['part'].append(n)
-        if duration:
-            self.kit[name]['counter'] += duration
+        self.kit[name]['counter'] += duration
 
     def accent_note(self, name, duration=1.0, volume=None, accent=None):
         if volume is None:
