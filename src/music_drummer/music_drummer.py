@@ -147,7 +147,7 @@ class Drummer:
             volume += factor
 
     def write(self, filename='drums.mid', format='midi'):
-        self.score.write(format, filename)
+        self.score.write(format, fp=filename)
 
     def instrument_map(self, key=None):
         kit = {

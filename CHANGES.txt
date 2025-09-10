@@ -1,3 +1,6 @@
+0.2.13 2025-09-10
+    - Fix write().
+
 0.2.12 2025-09-09
     - Add volume to pattern().
 

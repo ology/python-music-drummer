@@ -140,6 +140,8 @@ class TestDrummer(unittest.TestCase):
         d.note('ridebell', duration=1/2)
         self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 7)
         self.assertEqual(d.kit['cymbals']['counter'], 3.5)
+        # d.sync_parts()
+        # d.write()
 
     def test_percussion(self):
         d = Drummer()
