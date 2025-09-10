@@ -176,5 +176,14 @@ class TestDrummer(unittest.TestCase):
         # d.sync_parts()
         # d.show('midi')
 
+    def test_kit_map(self):
+        d = Drummer()
+        got = d.instrument_map()
+        self.assertEqual(len(got), 38)
+        got = d.instrument_map(name='Side Stick')
+        self.assertEqual(got['name'], 'Side Stick')
+        got = d.instrument_map(num=37)
+        self.assertEqual(got['name'], 'Side Stick')
+
 if __name__ == '__main__':
     unittest.main()

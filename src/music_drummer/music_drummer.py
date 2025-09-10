@@ -78,6 +78,9 @@ class Drummer:
         elif name == 'pedal':
             patch = self.instrument_map('hihat3')
             name = 'hihat'
+        elif name == 'sidestick':
+            patch = self.instrument_map(name)
+            name = 'snare'
         elif re.search(r"^tom\d$", name):
             patch = self.instrument_map(name)
             name = 'toms'
@@ -157,14 +160,14 @@ class Drummer:
         # n.b. format=None shows whatever the music21 default is set to
         self.score.show(format)
 
-    def instrument_map(self, key=None):
+    def instrument_map(self, key=None, num=None, name=None):
         kit = {
             'kick1': { 'num': 35, 'name': 'Acoustic Bass Drum', 'obj': instrument.BassDrum() },
             'kick2': { 'num': 36, 'name': 'Bass Drum 1', 'obj': instrument.BassDrum() },
             'snare1': { 'num': 38, 'name': 'Acoustic Snare', 'obj': instrument.SnareDrum() },
             'snare2': { 'num': 40, 'name': 'Electric Snare', 'obj': instrument.SnareDrum() },
             'sidestick': { 'num': 37, 'name': 'Side Stick', 'obj': instrument.SnareDrum() },
-            'clap': { 'num': 39, 'name': 'Hand Clap', 'obj': instrument.Percussion() },
+            'clap': { 'num': 39, 'name': 'Hand Clap', 'obj': instrument.SnareDrum() },
             'hihat1': { 'num': 42, 'name': 'Closed High Hat', 'obj': instrument.HiHatCymbal() },
             'hihat2': { 'num': 46, 'name': 'Open High Hat', 'obj': instrument.HiHatCymbal() },
             'hihat3': { 'num': 44, 'name': 'Pedal High Hat', 'obj': instrument.HiHatCymbal() },
@@ -191,8 +194,8 @@ class Drummer:
             'timbale2': { 'num': 66, 'name': 'Low Timbale', 'obj': instrument.Timbales() },
             'tambourine': { 'num': 54, 'name': 'Tambourine', 'obj': instrument.Tambourine() },
             'shaker': { 'num': 70, 'name': 'Maracas', 'obj': instrument.Maracas() },
-            'cabasa': { 'num': 69, 'name': 'Cabasa', 'obj': instrument.Percussion() },
-            'claves': { 'num': 75, 'name': 'Claves', 'obj': instrument.Percussion() },
+            'cabasa': { 'num': 69, 'name': 'Cabasa', 'obj': instrument.Maracas() },
+            'claves': { 'num': 75, 'name': 'Claves', 'obj': instrument.Woodblock() },
             'woodblock1': { 'num': 76, 'name': 'High Wood Block', 'obj': instrument.Woodblock() },
             'woodblock2': { 'num': 77, 'name': 'Low Wood Block', 'obj': instrument.Woodblock() },
             'triangle1': { 'num': 81, 'name': 'Open Triangle', 'obj': instrument.Triangle() },
@@ -200,5 +203,13 @@ class Drummer:
         }
         if key:
             return kit.get(key)
+        elif num:
+            for part in kit.values():
+                if part['num'] == num:
+                    return part
+        elif name:
+            for part in kit.values():
+                if part['name'] == name:
+                    return part
         else:
             return kit

@@ -48,6 +48,10 @@ d.show(format='midi') # or nothing, ='text', etc. see music21 docs
 # Ex 2 - 5/8 groove with intro:
 d = Drummer()
 
+kit = d.instrument_map() # get all the known kit instruments
+sidestick = d.instrument_map(name='Side Stick')
+sidestick = d.instrument_map(num=37)
+
 d.set_instrument('kick', 'kick2') # change to the electric kick
 d.set_instrument('snare', 'snare2') # change to the electric snare
 # print(d.instrument_map()) # full list of known instruments
