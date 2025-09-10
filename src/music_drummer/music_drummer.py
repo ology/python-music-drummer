@@ -122,7 +122,7 @@ class Drummer:
             for i in range(self.beats - 1):
                 self.note(patch)
 
-    def pattern(self, patterns=None, duration=1/4):
+    def pattern(self, patterns=None, duration=1/4, volume=None):
         if not patterns:
             return
         kit = list(self.instrument_map().keys()) + list(self.kit.keys())
@@ -133,7 +133,7 @@ class Drummer:
                         if bit == '0':
                             self.rest(inst, duration=duration)
                         else:
-                            self.note(inst, duration=duration)
+                            self.note(inst, duration=duration, volume=volume)
 
     def roll(self, name, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
