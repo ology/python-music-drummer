@@ -1,3 +1,6 @@
+0.2.0 2025-09-09
+    - Special-case the 3 high-hat states so they play on the same part.
+
 0.1.31 2025-09-09
     - Add missing tests.
 

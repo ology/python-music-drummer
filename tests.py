@@ -102,5 +102,16 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.kit['snare']['part'].getElementsByClass('Note')[2].duration.quarterLength, 1/2 - 1/16)
         self.assertEqual(d.kit['snare']['counter'], 1.5)
 
+    def test_hihats(self):
+        d = Drummer()
+        d.note('closed', duration=1/2)
+        d.note('open', duration=1/2)
+        d.note('pedal', duration=1/2)
+        d.note('closed', duration=1/2)
+        self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 4)
+        self.assertEqual(d.kit['hihat']['counter'], 2.0)
+        # d.sync_parts()
+        # d.score.show('midi')
+
 if __name__ == '__main__':
     unittest.main()

@@ -50,7 +50,17 @@ class Drummer:
             self.kit[name]['counter'] += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
-        patch = self.instrument_map(self.kit[name]['instrument'])
+        if name == 'hihat' or name == 'closed':
+            patch = self.instrument_map('hihat1')
+            name = 'hihat'
+        elif name == 'open':
+            patch = self.instrument_map('hihat2')
+            name = 'hihat'
+        elif name == 'pedal':
+            patch = self.instrument_map('hihat3')
+            name = 'hihat'
+        else:
+            patch = self.instrument_map(self.kit[name]['instrument'])
         if volume is None:
             volume = self.volume
         if flam > 0:
