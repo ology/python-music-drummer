@@ -146,6 +146,9 @@ class Drummer:
             self.note(name, duration=duration/subdivisions, volume=int(volume))
             volume += factor
 
+    def write(self, filename='drums.mid', format='midi'):
+        self.score.write(format, filename)
+
     def instrument_map(self, key=None):
         kit = {
             'kick1': { 'num': 35, 'name': 'Acoustic Bass Drum', 'obj': instrument.BassDrum() },

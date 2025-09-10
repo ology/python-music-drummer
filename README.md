@@ -96,4 +96,6 @@ for _ in range(8):
 d.sync_parts() # make the parts play simultaneously
 
 d.score.show() # or text, midi, etc. see music21 docs
+# or
+d.score.write(filename='drums.mid')
 ```
