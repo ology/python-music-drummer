@@ -15,6 +15,7 @@ class Drummer:
             'hihat': { 'instrument': 'hihat1', 'part': stream.Part(), 'counter': 0 },
             'toms': { 'instrument': 'tom3', 'part': stream.Part(), 'counter': 0 },
             'cymbals': { 'instrument': 'crash1', 'part': stream.Part(), 'counter': 0 },
+            'percussion': { 'instrument': 'clap', 'part': stream.Part(), 'counter': 0 },
         }
         self.score = stream.Score()
 
@@ -60,6 +61,8 @@ class Drummer:
                 item = 'toms'
             elif re.search(r"^ride.+$", item) or re.search(r"^crash\d$", item) or item == 'china' or item == 'splash':
                 item = 'cymbals'
+            elif re.search(r"^bongo\d$", item) or re.search(r"^conga\d$", item) or re.search(r"^timbale\d$", item) or re.search(r"^woodblock\d$", item) or re.search(r"^triangle\d$", item) or item == 'clap' or item == 'cowbell' or item == 'tambourine' or item == 'shaker' or item == 'cabasa' or item == 'claves':
+                item = 'percussion'
             n = note.Rest()
             n.duration = m21duration.Duration(duration)
             self.kit[item]['part'].append(n)
@@ -81,6 +84,8 @@ class Drummer:
         elif re.search(r"^ride.+$", name) or re.search(r"^crash\d$", name) or name == 'china' or name == 'splash':
             patch = self.instrument_map(name)
             name = 'cymbals'
+        elif re.search(r"^bongo\d$", name) or re.search(r"^conga\d$", name) or re.search(r"^timbale\d$", name) or re.search(r"^woodblock\d$", name) or re.search(r"^triangle\d$", name) or name == 'clap' or name == 'cowbell' or name == 'tambourine' or name == 'shaker' or name == 'cabasa' or name == 'claves':
+            name = 'percussion'
         else:
             patch = self.instrument_map(self.kit[name]['instrument'])
         if volume is None:
