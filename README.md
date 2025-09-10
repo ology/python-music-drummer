@@ -21,6 +21,8 @@ Each above type includes a `music21` `Part` and a `counter` (that starts at `0` 
 
 The known instruments and their names, MIDI numbers, and types can be seen by printing the return of `instrument_map()`.
 
+The high-hats are special-cased and are named `closed`, `open`, and `pedal`. All are added to the `hihat` `Part`, so that they can interact with each other.
+
 You can change default instruments with the `set_instrument()` method. This is most useful for the `kick` and `snare` types, because there are two variations for each: acoustic and electric.
 
 ## SYNOPSIS

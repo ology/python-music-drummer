@@ -1,3 +1,6 @@
+0.2.21 2025-09-10
+    - Describe the high-hats.
+
 0.2.20 2025-09-10
     - Update the docs again.
 
