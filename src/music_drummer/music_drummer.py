@@ -15,7 +15,7 @@ class Drummer:
             'hihat': { 'instrument': 'hihat1', 'part': stream.Part(), 'counter': 0 },
             'toms': { 'instrument': 'tom3', 'part': stream.Part(), 'counter': 0 },
             'cymbals': { 'instrument': 'crash1', 'part': stream.Part(), 'counter': 0 },
-            'percussion': { 'instrument': 'clap', 'part': stream.Part(), 'counter': 0 },
+            'percussion': { 'instrument': 'woodblock1', 'part': stream.Part(), 'counter': 0 },
         }
         self.score = stream.Score()
 

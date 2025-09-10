@@ -1,3 +1,6 @@
+0.2.8 2025-09-09
+    - Fix percussion...
+
 0.2.7 2025-09-09
     - Only sync parts having notes.
     - Handle percussion instruments.

@@ -155,6 +155,8 @@ class TestDrummer(unittest.TestCase):
         d.note('woodblock2')
         self.assertEqual(len(d.kit['percussion']['part'].getElementsByClass('Note')), 17)
         self.assertEqual(d.kit['percussion']['counter'], 17.0)
+        d.sync_parts()
+        d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
