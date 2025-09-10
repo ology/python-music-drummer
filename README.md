@@ -94,7 +94,7 @@ d.note('kick', duration=1/2)
 d.note('crash1', duration=1/2)
 d.rest(['snare', 'hihat', 'toms'], duration=1/2)
 
-# add a 4-part, 4-bar, eighth-note phrase to the score
+# add a 4-part, 8-bar, eighth-note phrase to the score
 for _ in range(8):
     d.pattern(
         patterns={
