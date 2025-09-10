@@ -1,3 +1,6 @@
+0.3.0 2025-09-10
+    - Allow 2 and 3 hihat bits in pattern().
+
 0.2.22 2025-09-10
     - Allow the high-hat aliases in pattern().
 

@@ -125,15 +125,19 @@ class Drummer:
     def pattern(self, patterns=None, duration=1/4, volume=None):
         if not patterns:
             return
-        kit = list(self.instrument_map().keys()) + list(self.kit.keys()) + ['closed', 'open', 'pedal']
+        kit = list(self.instrument_map().keys()) + list(self.kit.keys())
         for inst in kit:
             if inst in patterns:
                 for pattern_str in patterns[inst]:
                     for bit in pattern_str:
                         if bit == '0':
                             self.rest(inst, duration=duration)
-                        else:
+                        elif bit == '1':
                             self.note(inst, duration=duration, volume=volume)
+                        elif bit == '2':
+                            self.note('open', duration=duration, volume=volume)
+                        elif bit == '3':
+                            self.note('pedal', duration=duration, volume=volume)
 
     def roll(self, name, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
