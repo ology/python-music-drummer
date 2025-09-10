@@ -79,7 +79,8 @@ class Drummer:
             patch = self.instrument_map(name)
             name = 'toms'
         elif re.search(r"^ride.+$", name) or re.search(r"^crash\d$", name) or name == 'china' or name == 'splash':
-            item = 'cymbals'
+            patch = self.instrument_map(name)
+            name = 'cymbals'
         else:
             patch = self.instrument_map(self.kit[name]['instrument'])
         if volume is None:

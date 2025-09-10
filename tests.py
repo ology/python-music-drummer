@@ -122,9 +122,10 @@ class TestDrummer(unittest.TestCase):
         self.assertGreater(d.kit['toms']['counter'], 1.9)
         self.assertLessEqual(d.kit['toms']['counter'], 2.0)
 
-    # def test_cymbals(self):
-    #     d = Drummer()
-    #     d.note('crash1', duration=1/2)
+    def test_cymbals(self):
+        d = Drummer()
+        d.note('crash1', duration=1/2)
+        self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 1)
         # d.sync_parts()
         # d.score.show('midi')
 
