@@ -133,8 +133,8 @@ class TestDrummer(unittest.TestCase):
         d.note('ridebell', duration=1/2)
         self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 7)
         self.assertEqual(d.kit['cymbals']['counter'], 3.5)
-        d.sync_parts()
-        d.score.show('midi')
+        # d.sync_parts()
+        # d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
