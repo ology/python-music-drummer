@@ -57,7 +57,14 @@ class TestDrummer(unittest.TestCase):
         d.count_in()
         d.rest(['kick', 'snare', 'cymbals'], duration=4)
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), d.beats)
-        d.pattern(patterns={'kick': '1000000010100000', 'snare': '0000100000001000', 'hihat': '0010101010101010', 'crash1': '1000000000000000'})
+        d.pattern(
+            patterns={
+                'kick':   '1000000010100000',
+                'snare':  '0000100000001000',
+                'hihat':  '0010101010101010',
+                'crash1': '1000000000000000'
+            }
+        )
         self.assertEqual(len(d.kit['kick']['part'].getElementsByClass('Note')), 3)
         self.assertEqual(len(d.kit['snare']['part'].getElementsByClass('Note')), 2)
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 11)
