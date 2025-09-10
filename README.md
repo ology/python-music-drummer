@@ -85,9 +85,9 @@ d.rest(['snare', 'hihat', 'toms'], duration=1/2)
 for _ in range(8):
     d.pattern(
         patterns={
-            'kick':  '1000000010',
-            'snare': '0000001000',
-            'hihat': '0111111111',
+            'kick':   '1000000010',
+            'snare':  '0000001000',
+            'hihat':  '0111111111',
             'crash1': '1000000000',
         },
         duration=1/2

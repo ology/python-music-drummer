@@ -125,7 +125,8 @@ class Drummer:
     def pattern(self, patterns=None, duration=1/4):
         if not patterns:
             return
-        for inst in self.kit.keys():
+        kit = list(self.instrument_map().keys()) + list(self.kit.keys())
+        for inst in kit:
             if inst in patterns:
                 for pattern_str in patterns[inst]:
                     for bit in pattern_str:
