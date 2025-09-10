@@ -82,7 +82,7 @@ class TestDrummer(unittest.TestCase):
         )
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 16)
         d.sync_parts()
-        d.show('midi')
+        # d.show('midi')
 
     def test_roll(self):
         d = Drummer()
