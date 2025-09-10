@@ -1,3 +1,6 @@
+0.3.1 2025-09-10
+    - Update the docs a bit.
+
 0.3.0 2025-09-10
     - Allow 2 and 3 hihat bits in pattern().
 
