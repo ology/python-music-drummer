@@ -1,3 +1,6 @@
+0.2.3 2025-09-09
+    - Handle the hihat states in rest().
+
 0.2.2 2025-09-09
     - Make rest() handle a list of patches.
 
