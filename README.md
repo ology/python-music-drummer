@@ -1,11 +1,13 @@
 # Music Drummer
 Glorified Metronome
 
+## DESCRIPTION
+
 The methods of this package depend upon `music21`.
 
 For this package (and `music21` too), a `duration` of `1` is a quarter-note. So, `1/2` would be an eighth-note, etc.
 
-The (general MIDI) kit is made up of the following instrument types (and defaults):
+For this package, the (general MIDI) kit is made up of the following instrument types (and defaults):
 ```
 'kick' (default: 'kick1')
 'snare' (default: 'snare1')

@@ -1,3 +1,6 @@
+0.2.20 2025-09-10
+    - Update the docs again.
+
 0.2.19 2025-09-10
     - Add even more description to the Readme!
 
