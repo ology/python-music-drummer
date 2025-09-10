@@ -1,3 +1,6 @@
+0.2.1 2025-09-09
+    - Actually document the usage of the hi-hats.
+
 0.2.0 2025-09-09
     - Special-case the 3 high-hat states so they play on the same part.
 
