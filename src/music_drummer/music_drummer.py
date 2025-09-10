@@ -1,5 +1,6 @@
 from music21 import stream, note, tempo, meter, instrument
 from music21 import duration as m21duration
+import re
 
 class Drummer:
     def __init__(self, bpm=120, volume=100, accent=20, signature='4/4'):
@@ -12,6 +13,7 @@ class Drummer:
             'kick': { 'instrument': 'kick1', 'part': stream.Part(), 'counter': 0 },
             'snare': { 'instrument': 'snare1', 'part': stream.Part(), 'counter': 0 },
             'hihat': { 'instrument': 'hihat1', 'part': stream.Part(), 'counter': 0 },
+            'toms': { 'instrument': 'tom3', 'part': stream.Part(), 'counter': 0 },
         }
         self.score = stream.Score()
 
@@ -52,6 +54,8 @@ class Drummer:
                 item = 'hihat'
             elif item == 'pedal':
                 item = 'hihat'
+            elif re.search(r"^tom\d$", item):
+                item = 'toms'
             n = note.Rest()
             n.duration = m21duration.Duration(duration)
             self.kit[item]['part'].append(n)
@@ -68,6 +72,9 @@ class Drummer:
         elif name == 'pedal':
             patch = self.instrument_map('hihat3')
             name = 'hihat'
+        elif re.search(r"^tom\d$", name):
+            patch = self.instrument_map(name)
+            name = 'toms'
         else:
             patch = self.instrument_map(self.kit[name]['instrument'])
         if volume is None:

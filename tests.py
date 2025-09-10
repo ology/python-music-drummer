@@ -109,8 +109,18 @@ class TestDrummer(unittest.TestCase):
         d.note('closed', duration=1/2)
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 4)
         self.assertEqual(d.kit['hihat']['counter'], 2.0)
-        # d.sync_parts()
-        # d.score.show('midi')
+
+    def test_toms(self):
+        d = Drummer()
+        d.note('tom1', duration=1/3)
+        d.note('tom2', duration=1/3)
+        d.note('tom3', duration=1/3)
+        d.note('tom4', duration=1/3)
+        d.note('tom5', duration=1/3)
+        d.note('tom6', duration=1/3)
+        self.assertGreater(d.kit['toms']['counter'], 1.9)
+        d.sync_parts()
+        d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
