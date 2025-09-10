@@ -1,3 +1,6 @@
+0.2.22 2025-09-10
+    - Allow the high-hat aliases in pattern().
+
 0.2.21 2025-09-10
     - Describe the high-hats.
 

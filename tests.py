@@ -61,7 +61,7 @@ class TestDrummer(unittest.TestCase):
             patterns={
                 'kick':   '1000000010100000',
                 'snare':  '0000100000001000',
-                'hihat':  '0010101010101010',
+                'closed': '0010101010101010',
                 'crash1': '1000000000000000'
             }
         )
@@ -73,7 +73,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
-        # d.show('midi')
+        d.show('midi')
 
     def test_roll(self):
         d = Drummer()
