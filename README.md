@@ -19,6 +19,8 @@ Each above type includes a `music21` `Part` and a `counter` (that starts at `0` 
 
 The known instruments and their names, MIDI numbers, and types can be seen by printing the return of `instrument_map()`.
 
+You can change default instruments with the `set_instrument()` method. This is most useful for the `kick` and `snare` types, because there are two variations for each: acoustic and electric.
+
 ## SYNOPSIS
 ```python
 from music_drummer import Drummer
@@ -63,14 +65,14 @@ d.note('closed', duration=1/2)
 d.rest(['snare', 'kick', 'cymbals', 'toms'], duration=2)
 
 # 7 known cymbals:
-d.note('crash1', duration=1/2)
-d.note('crash2', duration=1/2)
-d.note('china', duration=1/2)
-d.note('splash', duration=1/2)
-d.note('ride1', duration=1/2)
-d.note('ride2', duration=1/2)
-d.note('ridebell', duration=1/2)
-d.rest(['kick', 'snare', 'hihat', 'toms'], duration=3.5)
+d.note('crash1')
+d.note('crash2')
+d.note('china')
+d.note('splash')
+d.note('ride1')
+d.note('ride2')
+d.note('ridebell')
+d.rest(['kick', 'snare', 'hihat', 'toms'], duration=7)
 
 # 6 known toms:
 d.note('tom1', duration=1/3)
