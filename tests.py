@@ -125,7 +125,8 @@ class TestDrummer(unittest.TestCase):
     def test_cymbals(self):
         d = Drummer()
         d.note('crash1', duration=1/2)
-        self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 1)
+        d.note('crash2', duration=1/2)
+        self.assertEqual(len(d.kit['cymbals']['part'].getElementsByClass('Note')), 2)
         # d.sync_parts()
         # d.score.show('midi')
 
