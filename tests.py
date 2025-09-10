@@ -68,11 +68,11 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(len(d.kit['kick']['part'].getElementsByClass('Note')), 3)
         self.assertEqual(len(d.kit['snare']['part'].getElementsByClass('Note')), 2)
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 11)
-        d.sync_parts()
-        self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
         self.assertEqual(d.kit['hihat']['counter'], 8.0)
         self.assertEqual(d.kit['hihat']['counter'], d.kit['kick']['counter'])
         self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
+        d.sync_parts()
+        self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 17)
         # d.score.show('midi')
 
     def test_roll(self):
