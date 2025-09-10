@@ -118,9 +118,15 @@ class TestDrummer(unittest.TestCase):
         d.note('tom4', duration=1/3)
         d.note('tom5', duration=1/3)
         d.note('tom6', duration=1/3)
+        self.assertEqual(len(d.kit['toms']['part'].getElementsByClass('Note')), 6)
         self.assertGreater(d.kit['toms']['counter'], 1.9)
-        d.sync_parts()
-        d.score.show('midi')
+        self.assertLessEqual(d.kit['toms']['counter'], 2.0)
+
+    # def test_cymbals(self):
+    #     d = Drummer()
+    #     d.note('crash1', duration=1/2)
+        # d.sync_parts()
+        # d.score.show('midi')
 
 if __name__ == '__main__':
     unittest.main()
