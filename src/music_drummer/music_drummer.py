@@ -85,6 +85,7 @@ class Drummer:
             patch = self.instrument_map(name)
             name = 'cymbals'
         elif re.search(r"^bongo\d$", name) or re.search(r"^conga\d$", name) or re.search(r"^timbale\d$", name) or re.search(r"^woodblock\d$", name) or re.search(r"^triangle\d$", name) or name == 'clap' or name == 'cowbell' or name == 'tambourine' or name == 'shaker' or name == 'cabasa' or name == 'claves':
+            patch = self.instrument_map(name)
             name = 'percussion'
         else:
             patch = self.instrument_map(self.kit[name]['instrument'])
