@@ -149,7 +149,8 @@ class Drummer:
     def write(self, filename='drums.mid', format='midi'):
         self.score.write(format, fp=filename)
 
-    def show(self, format='midi'):
+    def show(self, format=None):
+        # n.b. format=None shows whatever the music21 default is set to
         self.score.show(format)
 
     def instrument_map(self, key=None):

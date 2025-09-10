@@ -97,5 +97,5 @@ d.sync_parts() # make the parts play simultaneously
 
 d.show() # or format='text', format='midi', etc. see music21 docs
 # or
-d.write(filename='groove.mid')
+d.write() # or filename='groove.mid' for example
 ```
