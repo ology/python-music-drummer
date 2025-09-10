@@ -47,27 +47,20 @@ d.note('closed', duration=1/2)
 d.note('open', duration=1/2)
 d.note('pedal', duration=1/2)
 d.note('closed', duration=1/2)
-d.rest('snare', duration=2)
-d.rest('kick', duration=2)
-d.rest('crash', duration=2)
+d.rest(['snare', 'kick', 'crash'], duration=2)
 
 # add a eighth-note snare flam to the score
 d.note('snare', duration=1/2, flam=1/16)
-d.rest('kick', duration=1/2)
-d.rest('hihat', duration=1/2)
-d.rest('crash', duration=1/2)
+d.rest(['kick', 'hihat', 'crash'], duration=1/2)
 
 # add a 5-note snare roll for an eighth-note, increasing in volume
 d.roll('snare', duration=1/2, subdivisions=5, crescendo=[100, 127])
-d.rest('kick', duration=1/2)
-d.rest('hihat', duration=1/2)
-d.rest('crash', duration=1/2)
+d.rest(['kick', 'hihat', 'crash'], duration=1/2)
 
 # crash and kick!
 d.note('kick', duration=1/2)
 d.note('crash', duration=1/2)
-d.rest('snare', duration=1/2)
-d.rest('hihat', duration=1/2)
+d.rest(['snare', 'hihat'], duration=1/2)
 
 # add a 4-part, 4-bar, eighth-note phrase to the score
 for _ in range(8):
