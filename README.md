@@ -42,6 +42,15 @@ d.rest('kick', duration=10)
 d.rest('snare', duration=10)
 d.rest('crash', duration=10)
 
+# 3 hi-hat states: closed, open, pedal
+d.note('closed', duration=1/2)
+d.note('open', duration=1/2)
+d.note('pedal', duration=1/2)
+d.note('closed', duration=1/2)
+d.rest('snare', duration=2)
+d.rest('kick', duration=2)
+d.rest('crash', duration=2)
+
 # add a eighth-note snare flam to the score
 d.note('snare', duration=1/2, flam=1/16)
 d.rest('kick', duration=1/2)
