@@ -39,7 +39,7 @@ for _ in range(64):
         patterns={
             'kick':  '1000000010000000',
             'snare': '0000100000001000',
-            'hihat': '1010101010101010',
+            'hihat': '2310101010101010',
         },
     )
 d.sync_parts() # make the parts play simultaneously
