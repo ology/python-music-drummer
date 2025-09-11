@@ -71,7 +71,7 @@ d.note('pedal', duration=1/2)
 d.note('closed', duration=1/2)
 d.rest(['snare', 'kick', 'cymbals', 'toms'], duration=2)
 
-# 7 known cymbals:
+# 7 known cymbals
 d.note('crash1')
 d.note('crash2')
 d.note('china')
@@ -81,7 +81,7 @@ d.note('ride2')
 d.note('ridebell')
 d.rest(['kick', 'snare', 'hihat', 'toms'], duration=7)
 
-# 6 known toms:
+# 6 known toms
 d.note(['tom1', 'tom2', 'tom3', 'tom4', 'tom5', 'tom6'], duration=1/3)
 d.rest(['kick', 'snare', 'hihat', 'cymbals'], duration=2)
 
