@@ -47,6 +47,8 @@ class Drummer:
         else:
             self.kit[name] = { 'instrument': patch, 'part': stream.Part(), 'counter': 0 }
 
+    def _is_hihat(self, item):
+        return item == 'hihat' or item == 'closed' or item == 'open' or item == 'pedal'
     def _is_kick(self, item):
         return re.search(r"^kick\d$", item)
     def _is_snare(self, item):
@@ -62,7 +64,7 @@ class Drummer:
         if not isinstance(name, list):
             name = [name]
         for item in name:
-            if item == 'closed' or item == 'open' or item == 'pedal':
+            if self._is_hihat(item):
                 item = 'hihat'
             elif self._is_kick(item):
                 item = 'kick'
