@@ -1,3 +1,6 @@
+0.3.3 2025-09-10
+    - Make the `note()` method accept a list of notes to add.
+
 0.3.2 2025-09-10
     - Add name and num kit searching and tests.
 

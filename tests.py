@@ -128,12 +128,7 @@ class TestDrummer(unittest.TestCase):
 
     def test_toms(self):
         d = Drummer()
-        d.note('tom1', duration=1/3)
-        d.note('tom2', duration=1/3)
-        d.note('tom3', duration=1/3)
-        d.note('tom4', duration=1/3)
-        d.note('tom5', duration=1/3)
-        d.note('tom6', duration=1/3)
+        d.note(['tom1', 'tom2', 'tom3', 'tom4', 'tom5', 'tom6'], duration=1/3)
         self.assertEqual(len(d.kit['toms']['part'].getElementsByClass('Note')), 6)
         self.assertGreater(d.kit['toms']['counter'], 1.9)
         self.assertLessEqual(d.kit['toms']['counter'], 2.0)

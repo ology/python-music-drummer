@@ -82,12 +82,7 @@ d.note('ridebell')
 d.rest(['kick', 'snare', 'hihat', 'toms'], duration=7)
 
 # 6 known toms:
-d.note('tom1', duration=1/3)
-d.note('tom2', duration=1/3)
-d.note('tom3', duration=1/3)
-d.note('tom4', duration=1/3)
-d.note('tom5', duration=1/3)
-d.note('tom6', duration=1/3)
+d.note(['tom1', 'tom2', 'tom3', 'tom4', 'tom5', 'tom6'], duration=1/3)
 d.rest(['kick', 'snare', 'hihat', 'cymbals'], duration=2)
 
 # add a eighth-note snare flam to the score

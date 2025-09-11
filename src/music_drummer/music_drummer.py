@@ -69,41 +69,44 @@ class Drummer:
             self.kit[item]['counter'] += duration
 
     def note(self, name, duration=1.0, volume=None, flam=0):
-        if name == 'hihat' or name == 'closed':
-            patch = self.instrument_map('hihat1')
-            name = 'hihat'
-        elif name == 'open':
-            patch = self.instrument_map('hihat2')
-            name = 'hihat'
-        elif name == 'pedal':
-            patch = self.instrument_map('hihat3')
-            name = 'hihat'
-        elif name == 'sidestick':
-            patch = self.instrument_map(name)
-            name = 'snare'
-        elif re.search(r"^tom\d$", name):
-            patch = self.instrument_map(name)
-            name = 'toms'
-        elif re.search(r"^ride.+$", name) or re.search(r"^crash\d$", name) or name == 'china' or name == 'splash':
-            patch = self.instrument_map(name)
-            name = 'cymbals'
-        elif re.search(r"^bongo\d$", name) or re.search(r"^conga\d$", name) or re.search(r"^timbale\d$", name) or re.search(r"^woodblock\d$", name) or re.search(r"^triangle\d$", name) or name == 'clap' or name == 'cowbell' or name == 'tambourine' or name == 'shaker' or name == 'cabasa' or name == 'claves':
-            patch = self.instrument_map(name)
-            name = 'percussion'
-        else:
-            patch = self.instrument_map(self.kit[name]['instrument'])
-        if volume is None:
-            volume = self.volume
-        if flam > 0:
-            grace = note.Note(patch['num'])
-            grace.volume.velocity = volume
-            grace.duration = m21duration.Duration(flam)
-            self.kit[name]['part'].append(grace)
-        n = note.Note(patch['num'])
-        n.volume.velocity = volume
-        n.duration = m21duration.Duration(duration - flam)
-        self.kit[name]['part'].append(n)
-        self.kit[name]['counter'] += duration
+        if not isinstance(name, list):
+            name = [name]
+        for item in name:
+            if item == 'hihat' or item == 'closed':
+                patch = self.instrument_map('hihat1')
+                item = 'hihat'
+            elif item == 'open':
+                patch = self.instrument_map('hihat2')
+                item = 'hihat'
+            elif item == 'pedal':
+                patch = self.instrument_map('hihat3')
+                item = 'hihat'
+            elif item == 'sidestick':
+                patch = self.instrument_map(item)
+                name = 'snare'
+            elif re.search(r"^tom\d$", item):
+                patch = self.instrument_map(item)
+                item = 'toms'
+            elif re.search(r"^ride.+$", item) or re.search(r"^crash\d$", item) or item == 'china' or item == 'splash':
+                patch = self.instrument_map(item)
+                item = 'cymbals'
+            elif re.search(r"^bongo\d$", item) or re.search(r"^conga\d$", item) or re.search(r"^timbale\d$", item) or re.search(r"^woodblock\d$", item) or re.search(r"^triangle\d$", item) or item == 'clap' or item == 'cowbell' or item == 'tambourine' or item == 'shaker' or item == 'cabasa' or item == 'claves':
+                patch = self.instrument_map(item)
+                item = 'percussion'
+            else:
+                patch = self.instrument_map(self.kit[item]['instrument'])
+            if volume is None:
+                volume = self.volume
+            if flam > 0:
+                grace = note.Note(patch['num'])
+                grace.volume.velocity = volume
+                grace.duration = m21duration.Duration(flam)
+                self.kit[item]['part'].append(grace)
+            n = note.Note(patch['num'])
+            n.volume.velocity = volume
+            n.duration = m21duration.Duration(duration - flam)
+            self.kit[item]['part'].append(n)
+            self.kit[item]['counter'] += duration
 
     def accent_note(self, name, duration=1.0, volume=None, accent=None):
         if volume is None:
