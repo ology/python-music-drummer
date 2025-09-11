@@ -17,7 +17,7 @@ For this package, the (general MIDI) kit is made up of the following instrument 
 'percussion' (default: 'woodblock1')
 ```
 
-Each above type includes a `music21` `Part` and a `counter` (that starts at `0` of course).
+Each above type includes a `music21` `Part` and a beat `counter` (that starts at `0` of course).
 
 The known instruments and their names, MIDI numbers, and types can be seen by printing the return of `instrument_map()`.
 
