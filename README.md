@@ -94,8 +94,7 @@ d.roll('snare', duration=1/2, subdivisions=5, crescendo=[100, 127])
 d.rest(['kick', 'hihat', 'cymbals', 'toms'], duration=1/2)
 
 # crash and kick!
-d.note('kick', duration=1/2)
-d.note('crash1', duration=1/2)
+d.note(['kick', 'crash1'], duration=1/2)
 d.rest(['snare', 'hihat', 'toms'], duration=1/2)
 
 # add a 4-part, 8-bar, eighth-note phrase to the score
