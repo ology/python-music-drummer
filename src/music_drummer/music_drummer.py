@@ -47,6 +47,13 @@ class Drummer:
         else:
             self.kit[name] = { 'instrument': patch, 'part': stream.Part(), 'counter': 0 }
 
+    def _is_tom(self, item):
+        return re.search(r"^tom\d$", item)
+    def _is_cymbal(self, item):
+        return re.search(r"^ride.+$", item) or re.search(r"^crash\d$", item) or item == 'china' or item == 'splash'
+    def _is_percussion(self, item):
+        return re.search(r"^bongo\d$", item) or re.search(r"^conga\d$", item) or re.search(r"^timbale\d$", item) or re.search(r"^woodblock\d$", item) or re.search(r"^triangle\d$", item) or item == 'clap' or item == 'cowbell' or item == 'tambourine' or item == 'shaker' or item == 'cabasa' or item == 'claves'
+
     def rest(self, name, duration=1.0):
         if not isinstance(name, list):
             name = [name]
@@ -57,11 +64,13 @@ class Drummer:
                 item = 'hihat'
             elif item == 'pedal':
                 item = 'hihat'
-            elif re.search(r"^tom\d$", item):
+            elif item == 'sidestick':
+                item = 'snare'
+            elif self._is_tom(item):
                 item = 'toms'
-            elif re.search(r"^ride.+$", item) or re.search(r"^crash\d$", item) or item == 'china' or item == 'splash':
+            elif self._is_cymbal(item):
                 item = 'cymbals'
-            elif re.search(r"^bongo\d$", item) or re.search(r"^conga\d$", item) or re.search(r"^timbale\d$", item) or re.search(r"^woodblock\d$", item) or re.search(r"^triangle\d$", item) or item == 'clap' or item == 'cowbell' or item == 'tambourine' or item == 'shaker' or item == 'cabasa' or item == 'claves':
+            elif self._is_percussion(item):
                 item = 'percussion'
             n = note.Rest()
             n.duration = m21duration.Duration(duration)
@@ -84,13 +93,13 @@ class Drummer:
             elif item == 'sidestick':
                 patch = self.instrument_map(item)
                 name = 'snare'
-            elif re.search(r"^tom\d$", item):
+            elif self._is_tom(item):
                 patch = self.instrument_map(item)
                 item = 'toms'
-            elif re.search(r"^ride.+$", item) or re.search(r"^crash\d$", item) or item == 'china' or item == 'splash':
+            elif self._is_cymbal(item):
                 patch = self.instrument_map(item)
                 item = 'cymbals'
-            elif re.search(r"^bongo\d$", item) or re.search(r"^conga\d$", item) or re.search(r"^timbale\d$", item) or re.search(r"^woodblock\d$", item) or re.search(r"^triangle\d$", item) or item == 'clap' or item == 'cowbell' or item == 'tambourine' or item == 'shaker' or item == 'cabasa' or item == 'claves':
+            elif self._is_percussion(item):
                 patch = self.instrument_map(item)
                 item = 'percussion'
             else:
