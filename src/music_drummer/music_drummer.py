@@ -48,7 +48,7 @@ class Drummer:
             self.kit[name] = { 'instrument': patch, 'part': stream.Part(), 'counter': 0 }
 
     def _is_hihat(self, item):
-        return item == 'hihat' or item == 'closed' or item == 'open' or item == 'pedal'
+        return re.search(r"^hihat\d$", item) or item == 'closed' or item == 'open' or item == 'pedal'
     def _is_kick(self, item):
         return re.search(r"^kick\d$", item)
     def _is_snare(self, item):
