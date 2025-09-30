@@ -137,7 +137,6 @@ d.show('midi')
 ```python
 import mido
 import random
-import re
 import sys
 from music_drummer import Drummer
 
@@ -149,9 +148,9 @@ with mido.open_output(port_name) as outport:
     for _ in range(8):
         d.pattern(
             patterns={
-                'kick':  re.sub(r'^0b', '', bin(random.getrandbits(16))),
-                'snare': re.sub(r'^0b', '', bin(random.getrandbits(16))),
-                'hihat': re.sub(r'^0b', '', bin(random.getrandbits(16))),
+                'kick':  ''.join(random.choices('01',k=16)),
+                'snare': ''.join(random.choices('01',k=16)),
+                'hihat': ''.join(random.choices('01',k=16)),
             },
         )
     d.sync_parts()
