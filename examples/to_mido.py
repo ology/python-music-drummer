@@ -1,7 +1,8 @@
 import mido
 import sys
-sys.path.append('./src')
-from music_drummer.music_drummer import Drummer
+from music_drummer import Drummer
+# sys.path.append('./src')
+# from music_drummer.music_drummer import Drummer
 
 port_name = sys.argv[1] if len(sys.argv) > 1 else 'USB MIDI Interface'
 with mido.open_output(port_name) as outport:
