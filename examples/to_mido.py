@@ -5,13 +5,18 @@ import sys
 sys.path.append('./src')
 from music_drummer.music_drummer import Drummer
 
+random_bits = lambda: f'{random.getrandbits(16):016b}' # 16-bit beat-string
+
 port_name = sys.argv[1] if len(sys.argv) > 1 else 'USB MIDI Interface'
+
 with mido.open_output(port_name) as outport:
     print(outport)
     d = Drummer()
-    kick = f'{random.getrandbits(16):016b}' # 16-bit beat-string
-    snare = f'{random.getrandbits(16):016b}'
-    hihat = f'{random.getrandbits(16):016b}'
+    d.set_bpm(60)
+    d.set_ts()
+    kick = random_bits()
+    snare = random_bits()
+    hihat = random_bits()
     for _ in range(8):
         d.pattern(
             patterns={
