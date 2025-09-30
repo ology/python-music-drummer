@@ -3,7 +3,7 @@ import mido
 import time
 import io
 import sys
-sys.path.append('../src')
+sys.path.append('./src')
 from music_drummer.music_drummer import Drummer
 
 def to_mido(score):
