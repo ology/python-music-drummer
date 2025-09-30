@@ -1,3 +1,6 @@
+0.3.13 2025-09-30
+    - And again...
+
 0.3.12 2025-09-30
     - Updated the musical examples again.
 

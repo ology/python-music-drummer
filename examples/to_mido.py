@@ -12,9 +12,9 @@ with mido.open_output(port_name) as outport:
     for _ in range(4):
         d.pattern(
             patterns={
-                'kick':  ''.join(random.choices('01',k=16)),
-                'snare': ''.join(random.choices('01',k=16)),
-                'hihat': ''.join(random.choices('01',k=16)),
+                'kick':  f'{random.getrandbits(16):016b}',
+                'snare': f'{random.getrandbits(16):016b}',
+                'hihat': f'{random.getrandbits(16):016b}',
             },
         )
     d.sync_parts()
