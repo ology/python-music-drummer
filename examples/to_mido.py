@@ -14,7 +14,7 @@ def to_mido(score):
         mido_midi = mido.MidiFile(file=bytes_stream)
         print(f"\nMido file has {len(mido_midi.tracks)} tracks.")
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"ERROR: {e}")
     return mido_midi
 
 if __name__ == "__main__":
