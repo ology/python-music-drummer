@@ -1,6 +1,5 @@
 from music21 import midi
 import mido
-import time
 import io
 import sys
 sys.path.append('./src')
