@@ -145,12 +145,15 @@ port_name = sys.argv[1] if len(sys.argv) > 1 else 'USB MIDI Interface'
 with mido.open_output(port_name) as outport:
     print(outport)
     d = Drummer()
+    kick = f'{random.getrandbits(16):016b}' # 16-bit beat-string
+    snare = f'{random.getrandbits(16):016b}'
+    hihat = f'{random.getrandbits(16):016b}'
     for _ in range(8):
         d.pattern(
             patterns={
-                'kick':  f'{random.getrandbits(16):016b}', # 16-bit beat-string
-                'snare': f'{random.getrandbits(16):016b}',
-                'hihat': f'{random.getrandbits(16):016b}',
+                'kick':  kick,
+                'snare': snare,
+                'hihat': hihat,
             },
         )
     d.sync_parts()

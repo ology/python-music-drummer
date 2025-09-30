@@ -242,7 +242,6 @@ class Drummer:
         bytes_stream.seek(0)
         try:
             mido_midi = mido.MidiFile(file=bytes_stream)
-            print(f"\nMido file has {len(mido_midi.tracks)} tracks.")
         except Exception as e:
             print(f"ERROR: {e}")
         return mido_midi
