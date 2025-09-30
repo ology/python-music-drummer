@@ -1,3 +1,6 @@
+0.3.10 2025-09-30
+    - Add musical examples to the readme.
+
 0.3.9 2025-09-30
     - Add the `to_mido()` method.
 

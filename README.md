@@ -98,7 +98,7 @@ d.note(['kick', 'crash1'], duration=1/2)
 d.rest(['snare', 'hihat', 'toms'], duration=1/2)
 
 # add a 4-part, 8-bar, eighth-note phrase to the score
-for _ in range(8):
+for _ in range(4):
     d.pattern(
         patterns={
             'kick':   '1000000010',
@@ -110,7 +110,51 @@ for _ in range(8):
 
 d.sync_parts() # make the parts play simultaneously
 
+m = d.to_mido() # convert to a format mido can understand
+
 d.show() # or format='text', format='midi', etc. see music21 docs
 # or
 d.write() # or filename='groove.mid' for example
+```
+
+## Musical Examples
+```python
+from music_drummer import Drummer
+
+d = Drummer()
+for _ in range(8):
+    d.pattern(
+        patterns={
+            'kick':  '1000000010000000',
+            'snare': '0000100000001000',
+            'hihat': '2310101010101010',
+        },
+    )
+d.sync_parts()
+
+d.show('midi')
+```
+```python
+import mido
+import sys
+from music_drummer import Drummer
+
+port_name = sys.argv[1] if len(sys.argv) > 1 else 'USB MIDI Interface'
+
+with mido.open_output(port_name) as outport:
+    print(outport)
+    d = Drummer()
+    for _ in range(8):
+        d.pattern(
+            patterns={
+                'kick':  '1000000010000000',
+                'snare': '0000100000001000',
+                'hihat': '2310101010101010',
+            },
+        )
+    d.sync_parts()
+
+    m = d.to_mido()
+    for msg in m.play():
+        outport.send(msg)
 ```
