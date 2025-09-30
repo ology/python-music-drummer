@@ -31,5 +31,6 @@ if __name__ == "__main__":
             },
         )
         d.sync_parts()
-        x = to_mido(d.score)
-        print(x)
+        m = to_mido(d.score)
+        for msg in m.play():
+            outport.send(msg)
