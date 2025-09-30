@@ -1,6 +1,8 @@
-from music21 import stream, note, tempo, meter, instrument
+import mido
+from music21 import stream, note, tempo, meter, midi, instrument
 from music21 import duration as m21duration
 import re
+import io
 
 class Drummer:
     def __init__(self, bpm=120, volume=100, accent=20, signature='4/4'):
@@ -232,3 +234,15 @@ class Drummer:
                     return part
         else:
             return kit
+
+    def to_mido(self):
+        mf = midi.translate.streamToMidiFile(self.score)
+        midi_data_in_memory = mf.writestr()
+        bytes_stream = io.BytesIO(midi_data_in_memory)
+        bytes_stream.seek(0)
+        try:
+            mido_midi = mido.MidiFile(file=bytes_stream)
+            print(f"\nMido file has {len(mido_midi.tracks)} tracks.")
+        except Exception as e:
+            print(f"ERROR: {e}")
+        return mido_midi

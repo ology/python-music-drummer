@@ -1,3 +1,6 @@
+0.3.9 2025-09-30
+    - Add the `to_mido()` method.
+
 0.3.8 2025-09-11
     - Clean up a bit.
 
