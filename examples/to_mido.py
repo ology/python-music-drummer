@@ -13,7 +13,7 @@ def to_mido(score):
     bytes_stream.seek(0)
     try:
         mido_midi = mido.MidiFile(file=bytes_stream)
-        print(f"\nMido file has {len(mido_midi_file.tracks)} tracks.")
+        print(f"\nMido file has {len(mido_midi.tracks)} tracks.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
     return mido_midi
