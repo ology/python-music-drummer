@@ -180,5 +180,15 @@ class TestDrummer(unittest.TestCase):
         got = d.instrument_map(num=37)
         self.assertEqual(got['name'], 'Side Stick')
 
+    def test_count_in(self):
+        d = Drummer()
+        d.set_ts()
+        d.count_in()
+        self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), d.beats)
+        d = Drummer()
+        d.set_ts()
+        d.count_in(2)
+        self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), d.beats * 2)
+
 if __name__ == '__main__':
     unittest.main()

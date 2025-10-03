@@ -1,3 +1,6 @@
+0.3.16 2025-10-03
+    - Fix the count_in() method args.
+
 0.3.15 2025-09-30
     - Improve example! Imagine that!
 
