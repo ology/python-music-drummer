@@ -30,6 +30,8 @@ def section_A(section=0):
     d.rest(['kick', 'hihat'], 2)
 
 def section_B():
+    d.note('crash1', 1)
+    d.rest('cymbals', 15)
     for _ in range(3):
         d.pattern(
             patterns={
@@ -38,7 +40,6 @@ def section_B():
                 'hihat': '0010101010101010',
             },
         )
-    d.note('crash1', 1)
     for _ in range(1):
         d.pattern(
             patterns={
@@ -51,7 +52,6 @@ def section_B():
     for duration in fill:
         d.note('snare', duration)
     d.rest(['kick', 'hihat'], 2)
-    d.rest('cymbals', 15)
 
 
 if __name__ == "__main__":
