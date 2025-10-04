@@ -3,6 +3,7 @@ from music_drummer import Drummer
 import sys
 sys.path.append('./src')
 from music_drummer.music_drummer import Drummer
+from random_rhythms import Rhythm
 import random
 
 def section_A(section=0):
