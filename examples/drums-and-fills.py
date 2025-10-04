@@ -1,4 +1,3 @@
-from music_drummer import Drummer
 # from music_drummer import Drummer
 import sys
 sys.path.append('./src')
