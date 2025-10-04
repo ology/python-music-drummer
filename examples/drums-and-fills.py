@@ -5,6 +5,9 @@ import random
 def section_A(section=0):
     if section == 1:
         d.note('crash1', 1)
+        d.rest('cymbals', 15)
+    else:
+        d.rest('cymbals', 16)
     for _ in range(3):
         d.pattern(
             patterns={
@@ -25,10 +28,6 @@ def section_A(section=0):
     for duration in fill:
         d.note('snare', duration)
     d.rest(['kick', 'hihat'], 2)
-    if section == 1:
-        d.rest('cymbals', 15)
-    else:
-        d.rest('cymbals', 16)
 
 def section_B():
     for _ in range(3):
