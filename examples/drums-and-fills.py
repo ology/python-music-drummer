@@ -3,6 +3,8 @@ from random_rhythms import Rhythm
 import random
 
 def section_A(section=0):
+    if section == 1:
+        d.note('crash1', 1)
     for _ in range(3):
         d.pattern(
             patterns={
@@ -11,8 +13,6 @@ def section_A(section=0):
                 'hihat': '1010101010101010',
             },
         )
-    if section == 1:
-        d.note('crash1', 1)
     for _ in range(1):
         d.pattern(
             patterns={
