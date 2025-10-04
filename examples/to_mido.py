@@ -1,7 +1,7 @@
 import mido
 import random
-import sys
 # from music_drummer import Drummer
+import sys
 sys.path.append('./src')
 from music_drummer.music_drummer import Drummer
 
