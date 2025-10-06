@@ -1,6 +1,6 @@
+import random
 from music_creatingrhythms import Rhythms
 from music_drummer import Drummer
-import random
 # author use:
 # import sys
 # sys.path.append('./src')
