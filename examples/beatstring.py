@@ -1,6 +1,10 @@
 from music_creatingrhythms import Rhythms
 from music_drummer import Drummer
 import random
+# author use:
+# import sys
+# sys.path.append('./src')
+# from music_drummer.music_drummer import Drummer
 
 beats = 16
 
