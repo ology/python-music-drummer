@@ -168,3 +168,7 @@ with mido.open_output(port_name) as outport:
     for msg in m.play():
         outport.send(msg)
 ```
+
+## SEE ALSO
+
+The [test file](https://github.com/ology/python-music-drummer/blob/main/tests.py) and [examples directory](https://github.com/ology/python-music-drummer/tree/main/examples) in this distribution.
