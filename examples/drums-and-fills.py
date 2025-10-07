@@ -64,7 +64,6 @@ def section_B():
             d.note('tom1', duration)
     d.rest(['kick', 'hihat'], 2)
 
-
 if __name__ == "__main__":
     r = Rhythm(
         measure_size=2,
