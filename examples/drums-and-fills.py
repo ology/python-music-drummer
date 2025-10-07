@@ -1,13 +1,13 @@
 import random
 from random_rhythms import Rhythm
-# from music_drummer import Drummer
+from music_drummer import Drummer
 # author use:
-import sys
-sys.path.append('./src')
-from music_drummer.music_drummer import Drummer
+# import sys
+# sys.path.append('./src')
+# from music_drummer.music_drummer import Drummer
 
-def section_A(section=0):
-    if section == 1:
+def section_A(part=0):
+    if part == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
     else:
