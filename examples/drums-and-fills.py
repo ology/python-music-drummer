@@ -1,10 +1,10 @@
 import random
 from random_rhythms import Rhythm
-from music_drummer import Drummer
+# from music_drummer import Drummer
 # author use:
-# import sys
-# sys.path.append('./src')
-# from music_drummer.music_drummer import Drummer
+import sys
+sys.path.append('./src')
+from music_drummer.music_drummer import Drummer
 
 def section_A(section=0):
     if section == 1:
@@ -12,6 +12,7 @@ def section_A(section=0):
         d.rest('cymbals', 15)
     else:
         d.rest('cymbals', 16)
+    d.rest('toms', 16)
     for _ in range(3):
         d.pattern(
             patterns={
@@ -36,6 +37,7 @@ def section_A(section=0):
 def section_B():
     d.note('crash1', 1)
     d.rest('cymbals', 15)
+    d.rest('toms', 14)
     for _ in range(3):
         d.pattern(
             patterns={
@@ -53,8 +55,13 @@ def section_B():
             },
         )
     fill = random.choice(fills)
-    for duration in fill:
-        d.note('snare', duration)
+    for i,duration in enumerate(fill):
+        if i < len(fills) - 2:
+            d.note('snare', duration)
+            d.rest('tom1', duration)
+        else:
+            d.rest('snare', duration)
+            d.note('tom1', duration)
     d.rest(['kick', 'hihat'], 2)
 
 
