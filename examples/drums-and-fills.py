@@ -56,7 +56,7 @@ def section_B():
         )
     fill = random.choice(fills)
     for i,duration in enumerate(fill):
-        if i < len(fills) - 2:
+        if i < len(fills) - 1:
             d.note('snare', duration)
             d.rest('tom1', duration)
         else:
