@@ -1,10 +1,11 @@
 import random
 from random_rhythms import Rhythm
-from music_drummer import Drummer
-# author use:
-# import sys
-# sys.path.append('./src')
-# from music_drummer.music_drummer import Drummer
+try:
+    import sys
+    sys.path.append('./src')
+    from music_drummer.music_drummer import Drummer
+except ImportError:
+    from music_drummer import Drummer
 
 def section_A(part=0):
     if part == 1:

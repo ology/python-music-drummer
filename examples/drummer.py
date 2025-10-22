@@ -1,4 +1,9 @@
-from music_drummer import Drummer
+try:
+    import sys
+    sys.path.append('./src')
+    from music_drummer.music_drummer import Drummer
+except ImportError:
+    from music_drummer import Drummer
 
 # Ex 1 - basic 4/4 metronome groove:
 d = Drummer()

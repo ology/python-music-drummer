@@ -1,10 +1,12 @@
 import random
 import sys
 import mido
-from music_drummer import Drummer
-# author use:
-# sys.path.append('./src')
-# from music_drummer.music_drummer import Drummer
+try:
+    import sys
+    sys.path.append('./src')
+    from music_drummer.music_drummer import Drummer
+except ImportError:
+    from music_drummer import Drummer
 
 random_bits = lambda: f'{random.getrandbits(16):016b}' # 16-bit beat-string
 
