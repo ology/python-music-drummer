@@ -17,9 +17,6 @@ d.set_bpm(bpm)
 d.count_in()
 
 for i in range(4):
-    if i > 0:
-        bpm /= 2
-    d.set_bpm(bpm)
     d.pattern(
         patterns={
             'kick':  '1000000010100000',
@@ -27,6 +24,10 @@ for i in range(4):
             'hihat': '0010101010101010',
         }
     )
+    if i > 0:
+        bpm /= 2
+        ql /= 2
+    d.set_bpm(bpm, ql=ql)
 
 d.sync_parts()
 d.show(format='midi')
