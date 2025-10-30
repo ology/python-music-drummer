@@ -7,7 +7,7 @@ try:
 except ImportError:
     from music_drummer import Drummer
 
-bpm = sys.argv[1] if len(sys.argv) > 1 else 70
+bpm = sys.argv[1] if len(sys.argv) > 1 else 120
 ql = 1
 
 d = Drummer()
