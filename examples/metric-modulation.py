@@ -20,7 +20,7 @@ for i in range(4):
     if i > 0:
         bpm /= 2
         ql /= 2
-    d.set_bpm(bpm, ql=ql)
+        d.set_bpm(bpm, ql=ql)
     d.pattern(
         patterns={
             'kick':  '1000000010100000',
