@@ -8,7 +8,7 @@ except ImportError:
 bpm = sys.argv[1] if len(sys.argv) > 1 else 70
 
 d = Drummer()
-d.set_ts
+d.set_ts()
 d.set_bpm(bpm)
 
 d.count_in()
