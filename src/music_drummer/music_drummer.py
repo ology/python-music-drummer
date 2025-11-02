@@ -146,7 +146,7 @@ class Drummer:
             for i in range(self.beats - 1):
                 self.note(patch)
 
-    def pattern(self, patterns=None, duration=1/4, swing=50, volume=None):
+    def pattern(self, patterns=None, duration=1/4, swing=50, straight=[], volume=None):
         if not patterns:
             return
         kit = list(self.instrument_map().keys()) + list(self.kit.keys())
@@ -158,14 +158,14 @@ class Drummer:
                 for bit in patterns[inst]:
                     if bit == '0':
                         self.rest(inst, duration=duration)
-                    elif swing == 50:
+                    elif (swing <= 50) or (inst in straight):
                         if bit == '1':
                             self.note(inst, duration=duration, volume=volume)
                         elif bit == '2':
                             self.note('open', duration=duration, volume=volume)
                         elif bit == '3':
                             self.note('pedal', duration=duration, volume=volume)
-                    else:
+                    elif swing > 50:
                         if bit == '1':
                             self.note(inst, duration=y, volume=volume)
                             self.note(inst, duration=z, volume=volume)
