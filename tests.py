@@ -246,7 +246,7 @@ class TestDrummer(unittest.TestCase):
         self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         d.sync_parts()
         self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 21)
-        d.show('midi')
+        # d.show('midi')
 
 if __name__ == '__main__':
     unittest.main()

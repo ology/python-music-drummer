@@ -1,3 +1,6 @@
+0.4.0 2025-11-02
+    - Implement swing percent in pattern().
+
 0.3.17 2025-10-05
     - Update readme.
 

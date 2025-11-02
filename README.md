@@ -29,7 +29,7 @@ You can change default instruments with the `set_instrument()` method. This is m
 ```python
 from music_drummer import Drummer
 
-# Ex 1 - basic 4/4 metronome groove:
+# basic 4/4 metronome groove:
 d = Drummer()
 d.set_bpm(60) # set the beats per minute
 d.set_ts() # set the default time signature of 4/4
@@ -45,7 +45,20 @@ for _ in range(64):
 d.sync_parts() # make the parts play simultaneously
 d.show(format='midi') # or nothing, ='text', etc. see music21 docs
 
-# Ex 2 - 5/8 groove with intro:
+# it don't mean a thing, if it ain't got that swing
+d.pattern(
+    duration=1/2,
+    swing=67,
+    straight=['kick'],
+    single=['snare'],
+    patterns={
+        'kick':  '1000000010100000',
+        'snare': '0000100000001000',
+        'hihat': '1010101010101010',
+    }
+)
+
+# 5/8 groove with intro:
 d = Drummer()
 
 kit = d.instrument_map() # get all the known kit instruments
