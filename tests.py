@@ -190,5 +190,24 @@ class TestDrummer(unittest.TestCase):
         d.count_in(2)
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), d.beats * 2)
 
+    def test_swing(self):
+        d = Drummer()
+        d.set_ts()
+        d.pattern(
+            swing=67,
+            patterns={
+                'kick':  '1000000010100000',
+                'snare': '0000100000001000',
+                'hihat': '1010101010101010',
+            }
+        )
+        self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 16)
+        self.assertEqual(d.kit['hihat']['counter'], 4.0)
+        self.assertEqual(d.kit['hihat']['counter'], d.kit['kick']['counter'])
+        self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
+        d.sync_parts()
+        self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 26)
+        # d.show('midi')
+
 if __name__ == '__main__':
     unittest.main()

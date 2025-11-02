@@ -146,22 +146,35 @@ class Drummer:
             for i in range(self.beats - 1):
                 self.note(patch)
 
-    def pattern(self, patterns=None, duration=1/4, volume=None):
+    def pattern(self, patterns=None, duration=1/4, swing=50, volume=None):
         if not patterns:
             return
         kit = list(self.instrument_map().keys()) + list(self.kit.keys())
         for inst in kit:
             if inst in patterns:
-                for pattern_str in patterns[inst]:
-                    for bit in pattern_str:
-                        if bit == '0':
-                            self.rest(inst, duration=duration)
-                        elif bit == '1':
+                x = duration
+                y = (swing / 100) * x
+                z = x - y
+                for bit in patterns[inst]:
+                    if bit == '0':
+                        self.rest(inst, duration=duration)
+                    elif swing == 50:
+                        if bit == '1':
                             self.note(inst, duration=duration, volume=volume)
                         elif bit == '2':
                             self.note('open', duration=duration, volume=volume)
                         elif bit == '3':
                             self.note('pedal', duration=duration, volume=volume)
+                    else:
+                        if bit == '1':
+                            self.note(inst, duration=y, volume=volume)
+                            self.note(inst, duration=z, volume=volume)
+                        elif bit == '2':
+                            self.note('open', duration=y, volume=volume)
+                            self.note('open', duration=z, volume=volume)
+                        elif bit == '3':
+                            self.note('pedal', duration=y, volume=volume)
+                            self.note('pedal', duration=z, volume=volume)
 
     def roll(self, name, duration=1, subdivisions=4, crescendo=[]):
         if not crescendo:
