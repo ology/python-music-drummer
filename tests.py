@@ -202,13 +202,13 @@ class TestDrummer(unittest.TestCase):
                 'hihat': '1010101010101010',
             }
         )
-        # self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 16)
-        # self.assertEqual(d.kit['hihat']['counter'], 8.0)
-        # self.assertEqual(d.kit['hihat']['counter'], d.kit['kick']['counter'])
-        # self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
+        self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 16)
+        self.assertEqual(d.kit['hihat']['counter'], 8.0)
+        self.assertEqual(d.kit['hihat']['counter'], d.kit['kick']['counter'])
+        self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         d.sync_parts()
-        # self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 26)
-        d.show('midi')
+        self.assertEqual(len(d.score.recurse().getElementsByClass('Note')), 26)
+        # d.show('midi')
 
         # d = Drummer()
         # d.set_ts()
