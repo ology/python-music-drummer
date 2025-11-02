@@ -194,6 +194,7 @@ class TestDrummer(unittest.TestCase):
         d = Drummer()
         d.set_ts()
         d.pattern(
+            duration=1/2,
             swing=67,
             patterns={
                 'kick':  '1000000010100000',
@@ -202,7 +203,7 @@ class TestDrummer(unittest.TestCase):
             }
         )
         self.assertEqual(len(d.kit['hihat']['part'].getElementsByClass('Note')), 16)
-        self.assertEqual(d.kit['hihat']['counter'], 4.0)
+        self.assertEqual(d.kit['hihat']['counter'], 8.0)
         self.assertEqual(d.kit['hihat']['counter'], d.kit['kick']['counter'])
         self.assertEqual(d.kit['hihat']['counter'], d.kit['snare']['counter'])
         d.sync_parts()
